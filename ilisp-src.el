@@ -701,15 +701,9 @@ back-p is non-nil."
 		 (forward-line -1))
 	     (cond ((looking-at "\n"))
 		   ((looking-at "^;+ *\\(.*\\)")
-		     (if lisp-find-definition-verbose-p
-			 (message "  [p4: msg, point is now %s in %s]"
-				  (point) (buffer-name)))
 		     (cond ((not back-p)
 			     (message "%s" (match-string 1))
-			     (sit-for 1)))
-		     (if lisp-find-definition-verbose-p
-			 (message "  [p4b: msg, point is now %s in %s]"
-				  (point) (buffer-name))))
+			     (sit-for 1))))
 		   ((looking-at "^!+ *\\(.*\\)")
 		     (cond (back-p
 			     ;; [***bug***: we don't find these right when
