@@ -55,6 +55,9 @@
 ;; Franz
 (autoload 'allegro     "ilisp" "Inferior Allegro Common Lisp." t)
 
+;; Corman
+(autoload 'cormanlisp  "ilisp" "Inferior Corman Common Lisp." t)
+
 ;; Lucid
 ; (autoload 'lucid     "ilisp" "Inferior Lucid Common Lisp." t)
 
@@ -108,6 +111,11 @@
 ; (setq lucid-program "/usr/misc/.lucid/bin/lisp")
 
 (setq clisp-hs-program "clisp -I")
+
+;(setq *cormanlisp-dir* "C:\\CORMAN~1\\CORMAN~1.5\\")
+;(setq cormanlisp-program
+;      (concat *cormanlisp-dir* "clconsole.exe" 
+;	       " -image " *cormanlisp-dir* "CormanLisp.img"))
 
 ; (setq lispworks-program
 ;       "/somewhere/in/the/directory/tree/lispworks")
