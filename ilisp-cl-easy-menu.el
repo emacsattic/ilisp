@@ -87,14 +87,14 @@
      [ "Eval region" eval-region-lisp t ]
      [ "Eval defun" eval-defun-lisp t ]
      [ "Eval next sexp" eval-next-sexp-lisp t ]
-     ;; [ "Eval last sexp" eval-last-sexp-lisp t ]
+     [ "Eval last sexp" eval-last-sexp-lisp t ]
      [ "Eval changes" eval-changes-lisp t ]
      )
     ("Evaluate and Go"
      [ "Eval region" eval-region-and-go-lisp t ]
      [ "Eval defun" eval-defun-and-go-lisp t ]
      [ "Eval next sexp" eval-next-sexp-and-go-lisp t ]
-     ;; [ "Eval last sexp" eval-last-sexp-and-go-lisp t ]
+     [ "Eval last sexp" eval-last-sexp-and-go-lisp t ]
      )
     ("Compile"
      [ "File" compile-file-lisp t ]
@@ -118,7 +118,7 @@
      "--"
      [ "Reindent" reindent-lisp t ]
      [ "Indent sexp" indent-sexp-ilisp t ]
-     [ "Indent for comment" lisp-indent-for-comment t ]
+     ;; [ "Indent for comment" lisp-indent-for-comment t ]
      [ "Comment region" comment-region-lisp t ]
      "--"
      [ "Search in Files" search-lisp t ] 
