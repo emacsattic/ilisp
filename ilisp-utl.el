@@ -32,7 +32,11 @@ string."
   (or (stringp string)
       (error "ilisp bug: argument to %s is %s, which is not a string."
 	     'lisp-slashify string))
-  (let* ((string (prin1-to-string string))
+  (let* ((string (let (;; turn off all of this non-CL-compatible escaping.
+		       (print-escape-multibyte nil)
+		       (print-escape-newlines nil)
+		       (print-escape-nonascii nil))
+		   (prin1-to-string string)))
 	 ;; strip off surrounding quotes.
 	 (result (substring string 1 (1- (length string)))))
     (lisp-show-send result)	;; for side effect.
