@@ -121,7 +121,7 @@ ilisp-*prefix* is set to the desired prefix."
 
   (define-key   keymap "\M-\C-a"  'beginning-of-defun-lisp)
   (define-key   keymap "\M-\C-e"  'end-of-defun-lisp)
-  (ilisp-safe-define-key keymap "\C-\M-r" 'reposition-window-lisp "\C-r")
+  (ilisp-safe-define-key keymap "\C-\M-r" 'reposition-window-lisp "\C-\M-r")
 
   ;; This series of bindings was very non-FSF-compliant, but was also
   ;; hard to fit into any consistent binding scheme.  I saved them for
