@@ -109,6 +109,13 @@ way more appropriate for ilisp."
 This will speed up completion, but you no longer get partial
 completion.")
 
+(defvar ilisp-*process-connection-type* nil
+  "*Control type of device used to communicate with the inferior LISP.
+This is the value of `process-connection-type' used by ILISP buffers.
+The default is nil, i.e., use a pipe, so that \"strings can be long\".  On
+some systems, it should be set to t, i.e., use a pseudo terminal, or
+signalling would not work right.")
+
 (deflocal ilisp-filter-regexp nil
   "*What not to save on an inferior LISP's input history.
 Input matching this regexp is not saved on the input history in ilisp
