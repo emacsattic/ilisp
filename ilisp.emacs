@@ -159,6 +159,12 @@
 ;; If you have a local copy of the HyperSpec, set its path here.
 ; (setq common-lisp-hyperspec-root
 ;       "file:/home/joe/HyperSpec/")
+; (setq common-lisp-hyperspec-symbol-table
+;       "/home/joe/HyperSpec/Data/Map_Sym.Txt")
+
+;; Here's how to get the newest version of the CLHS:
+;; <http://groups.google.com/groups?selm=sfwvgftux7g.fsf%40shell01.TheWorld.com>
+
 
 
 ;;; Configuration of Utz-Uwe Haus' CLtL2 access package.
