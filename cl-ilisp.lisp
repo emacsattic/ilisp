@@ -81,6 +81,13 @@
 
 (defvar *ilisp-message-addon-string* "ILISP:")
 
+(defun maybe-function (symbol-name package-name)
+  (let ((symbol (and (find-package package-name)
+                     (find-symbol (symbol-name symbol-name)
+                                  (find-package package-name)))))
+    (when (fboundp symbol)
+      symbol)))
+
 (defmacro the-symbol-if-defined (((if-symbol if-package)
                                   (&optional else-symbol else-package)
                                   &key eval-p)
