@@ -95,8 +95,7 @@ Takes the program name from the variable ilisp-program.
       (let* ((dialect (car ilisp-dialect))
 	     (program ilisp-program)
 	     (args (lisp-command-args program))
-	     ;; Use pipes so that strings can be long
-	     (process-connection-type nil)
+	     (process-connection-type ilisp-*process-connection-type*)
 	     (names (format "%s" name))
 	     start)
 	(apply 'make-comint name (car args) nil (cdr args))
