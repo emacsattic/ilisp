@@ -120,6 +120,11 @@
 (unless (featurep 'cltl2)
   (load-library "extra/cltl2"))
 
+;; Load the ilisp mouse interface.  The user may have already loaded this, so we
+;; use the require/provide protocol to avoid reloading it.  For the same reason,
+;; we also don't want ilisp-mouse in ilisp-all.elc.  -- rgr, 9-Apr-03.
+(require 'ilisp-mouse)
+
 ;;; 19990806 Martin Atzmueller
 ;;; Added support for ILISP EASY-MENU. Muts be loaded *before* the
 ;;; rest of ILISP.
@@ -130,7 +135,6 @@
 
   (load "ilisp-def")
 
-  ;; (load "ilisp-el") ; Gotten rid of all the functions in it.
   (load "ilisp-sym")
   (load "ilisp-inp")
   (load "ilisp-ind")

@@ -72,6 +72,7 @@
 		   "ilisp-inp"
 		   "ilisp-ind"
 
+		   "ilisp-mouse"
 		   "ilisp-prc"
 		   "ilisp-val"
 		   "ilisp-out"
