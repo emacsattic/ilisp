@@ -1063,6 +1063,7 @@ items."
 	      file-specs)
 	    (setq found-p (next-definition-lisp nil t))))
     (cond ((and (not found-p)
+		nil	;; [disabled until fixed.  -- rgr, 17-Dec-03.]
 		lisp-edit-files)
 	    ;; No luck from the inferior lisp; search the available buffers.
 	    ;; [note that this does not work now, since it tries to pass type
@@ -1213,6 +1214,7 @@ file(s), using ilisp's built-in definition-finding heuristics.
 lisp-edit-files is not nil, we search the files in lisp-edit-files,
 possibly set up by the \\[lisp-directory] command, or the buffers in one
 of lisp-source-modes if lisp-edit-files is T.
+[Bug:  This doesn't work.  -- rgr, 17-Dec-03.]
 
    3.  If still not found, and at least one tag table is defined, we may
 use \\[find-tag] to keep searching.  This is controlled by the
