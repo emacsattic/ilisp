@@ -53,7 +53,7 @@
         "^nil"
 
         ilisp-fallback-package
-        ":common-lisp-user"
+        ':common-lisp-user
 
 	ilisp-in-package-command-string
 	"in-package"
@@ -65,7 +65,7 @@
 	"(package-name *package*)"
 
 	ilisp-in-package-command
-	"(in-package \"%s\")"
+	"(in-package %S)"
 
          ilisp-hash-form-regexp
          "\\(^[ \t]*#[+-].\\)\\|\\(^[ \t]*(\\(.*::?\\)?defpackage[ \t\n]\\)\\|\\(^[ \t]*(\\(.*::?\\)?in-package[ \t\n]*\\)"
