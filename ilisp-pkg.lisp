@@ -50,7 +50,8 @@
 ;;; 27 March 2002 Will Deakin
 
 #-(and nil gcl)
-(defpackage :ilisp (:use :common-lisp #+:CMU :conditions)
+(defpackage "ILISP" (:use :common-lisp #+:CMU :conditions)
+  (:nicknames "ilisp")
   ;; The following symbols should properly 'shadow' the inherited
   ;; ones.
   (:export #:ilisp-errors
