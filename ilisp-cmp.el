@@ -40,8 +40,7 @@
 The type of the result is a list.  If FUNCTION-P is T, only symbols
 with function bindings will be considered.  If no package is specified
 the buffer package will be used."
-
-  (let* ((choices 
+  (let* ((choices-string
 	  (ilisp-send 
 	   (format  (ilisp-value 'ilisp-complete-command) 
 		    (lisp-symbol-name symbol) (lisp-symbol-package symbol)
@@ -52,14 +51,16 @@ the buffer package will be used."
 	       (concat "Complete " 
 		       (if function-p "function ")
 		       (lisp-buffer-symbol symbol)))
-	   'complete)))
+	   'complete))
+	 choices)
     (if (or (ilisp-value 'comint-errorp t)
-            (ignore-errors (string-match ilisp-error-regexp choices)))
-	(progn (lisp-display-output choices)
-	       (error "Error completing %s" (lisp-buffer-symbol symbol))
-               nil)
-	(setq choices (read choices)
-	      choices (if (eq choices 'NIL) nil choices)))
+	    (ignore-errors (string-match ilisp-error-regexp choices-string)))
+	(setq choices 'error)
+      (setq choices (read choices-string)
+	    choices (if (eq choices 'NIL) nil choices)))
+    (unless (listp choices)
+      (lisp-display-output choices-string)
+      (error "Error completing %s" (lisp-buffer-symbol symbol)))
     (setq ilisp-original symbol
 	  ilisp-original-function-p function-p
 	  ilisp-original-table choices)))
