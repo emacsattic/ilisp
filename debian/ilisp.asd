@@ -13,10 +13,8 @@
 ;;;; as governed by the terms of the ILISP license.
 ;;;; *************************************************************************
 
-(defpackage #:ilisp-loader
-  (:use :common-lisp :asdf))
-
-(in-package #:ilisp-loader)
+(defpackage #:ilisp-system (:use #:cl #:asdf))
+(in-package #:ilisp-system)
 
 (defun symlink-ilisp-fasls ()
   (let ((fasls-path
@@ -39,7 +37,7 @@
 	    (delete-file symlink))
 	(let ((cmd (format nil "ln -sf ~A ~A"
 			   (namestring fasl) (namestring symlink))))
-	  (asdf:run-shell-command cmd))
+	  (run-shell-command cmd))
 	)))))
 
 #+(or allegro clisp lispworks cmu openmcl sbcl)
