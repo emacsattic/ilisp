@@ -456,9 +456,7 @@ If FILE is NIL, the entry will be removed."
                     (if (file-newer-than-file-p binary source)
                       binary
                       source))))
-            (ilisp-load-or-send
-             load-file)))
-                             
+            (ilisp-load-or-send (file-name-hack load-file))))
         (comint-send-code (ilisp-process)
                           'ilisp-done-init)
         (setq done t))                         
