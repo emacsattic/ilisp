@@ -72,7 +72,8 @@
   (let ((fun (or (macro-function sym)
 		 (and (fboundp sym) (symbol-function sym)))))
     (cond (fun
-            (if (and (= (sb-impl::get-type fun)
+            (if (and (= (the-function-if-defined ((#:widetag-of :sb-impl)
+                                                  (#:get-type :sb-impl)) fun)
                         ;; <3>
                         #.(the-symbol-if-defined
                            ((#:closure-header-widetag :sb-vm)
@@ -117,7 +118,8 @@
        (multiple-value-bind (func kind)
 	   (extract-function-info-from-name x)
 	 (if (and func kind)
-           (case (sb-impl::get-type func)
+           (case (the-function-if-defined ((#:widetag-of :sb-impl)
+                                           (#:get-type :sb-impl)) func)
              ;; <3>
              ((#.(the-symbol-if-defined ((#:closure-header-widetag :sb-vm)
                                          (#:closure-header-type :sb-vm)
