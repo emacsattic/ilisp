@@ -410,3 +410,11 @@ or while f returns #f. If returning early, return the return value of f."
      (macroexpand (read-from-string expression)))))
   (newline))
 
+(define-public (ilisp-describe symbol package)
+  "Evaluate SYMBOL in PACKAGE and describe its value."
+  (let* ((module (resolve-module '(oop goops describe)))
+	 (describe (false-if-exception
+		    (module-ref module 'describe))))
+    (if describe
+	(describe (eval-in-package symbol (string->module package)))
+	"Need GOOPS for describe.")))
