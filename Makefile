@@ -31,7 +31,7 @@ LN = ln -s
 HyperSpec = hyperspec-naggum.el
 
 # The SHELL variable is used only for making the distribution.
-SHELL = /bin/csh
+SHELL = /bin/sh
 
 # The 'rm' command used (we redefine it mostly because it may be
 # aliased
