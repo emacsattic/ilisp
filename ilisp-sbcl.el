@@ -152,9 +152,9 @@
 	ilisp-arglist-command "(ilisp:ilisp-arglist \"%s\" \"%s\")"
 	ilisp-find-source-command "(ilisp:source-file \"%s\" \"%s\" \"%s\")"
 
-        comint-fix-error ":r abort"
+        comint-fix-error ":restart abort"
 	comint-continue ":go"
-	ilisp-reset ":r toplevel"
+	ilisp-reset ":restart toplevel"
 	comint-interrupt-regexp "interrupted at"
 
         ;; Hardcoded binary extensions are undesirable.
