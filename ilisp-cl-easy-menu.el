@@ -84,6 +84,7 @@
     [ "Run Ilisp" run-ilisp t ]
     "--"
     ("Evaluate"
+     [ "Eval DWIM" eval-dwim-lisp t ]
      [ "Eval region" eval-region-lisp t ]
      [ "Eval defun" eval-defun-lisp t ]
      [ "Eval next sexp" eval-next-sexp-lisp t ]
@@ -91,6 +92,7 @@
      [ "Eval changes" eval-changes-lisp t ]
      )
     ("Evaluate and Go"
+     [ "Eval DWIM" eval-dwim-and-go-lisp t ]
      [ "Eval region" eval-region-and-go-lisp t ]
      [ "Eval defun" eval-defun-and-go-lisp t ]
      [ "Eval next sexp" eval-next-sexp-and-go-lisp t ]

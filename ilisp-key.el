@@ -151,7 +151,8 @@ ilisp-*prefix* is set to the desired prefix."
   (ilisp-safe-define-key        keymap "\M-\C-x" 'eval-defun-lisp) ; like Gnu
   (ilisp-bind-ilisp-key-for-map keymap "e"       'eval-defun-lisp "\C-j\C-d")
   (ilisp-bind-ilisp-key-for-map keymap "n"       'eval-next-sexp-lisp "\C-j\C-n")
-  (ilisp-bind-ilisp-key-for-map keymap "j"       'eval-last-sexp-lisp "\C-j\C-l")
+  (ilisp-bind-ilisp-key-for-map keymap "o"       'eval-last-sexp-lisp "\C-j\C-l")
+  (ilisp-bind-ilisp-key-for-map keymap "j"       'eval-dwim-lisp "\C-j\C-j")
   (define-key keymap "\C-x\C-e" 'eval-last-sexp-lisp)
   
   ;; Changed as per Martin Atzmueller suggestions.
@@ -173,9 +174,12 @@ ilisp-*prefix* is set to the desired prefix."
   (ilisp-bind-ilisp-key-for-map keymap "\C-n"
                                 'eval-next-sexp-and-go-lisp
                                 "\C-jn")
-  (ilisp-bind-ilisp-key-for-map keymap "\C-j"
+  (ilisp-bind-ilisp-key-for-map keymap "\C-o"
                                 'eval-last-sexp-and-go-lisp
                                 "\C-jl")
+  (ilisp-bind-ilisp-key-for-map keymap "\C-j"
+                                'eval-dwim-and-go-lisp
+                                "\C-jj")
   (ilisp-bind-ilisp-key-for-map keymap "\C-t"
                                 'compile-region-and-go-lisp
                                 "\C-kr")
