@@ -116,14 +116,12 @@
 
 
 ;;; ECL -- Beppe Attardi's developments over AKCL
+;;;        Currently maintained by Juan Jose Garcia-Ripoll
 
 (defdialect ecl "EcoLisp Common LISP" akcl
-  (setq comint-prompt-regexp "^>+"
+  (setq comint-prompt-regexp "^>+ "
         ilisp-error-regexp "Broken at [^\n]*"
-        ilisp-binary-extension nil
-        ilisp-init-binary-extension nil
-	ilisp-binary-command nil
-        ilisp-init-binary-command nil)
+        comint-fix-error ":pop\n(progn (terpri) (values))") ; kludge
 
   ;; ILD Support.
 
