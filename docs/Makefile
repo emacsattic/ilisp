@@ -15,7 +15,7 @@
 #==============================================================================
 # Various Variables
 
-Version = 5.11
+Version = 5.11.1
 
 # The SHELL variable is used only for making the distribution.
 SHELL = /bin/sh
