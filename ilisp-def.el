@@ -31,7 +31,8 @@
 		       comint-handler
 		       comint-update-status
 		       comint-prompt-status
-		       comint-abort-hook)
+		       comint-abort-hook
+		       comint-use-prompt-regexp-instead-of-fields)
   "List of ilisp local variables.")
 
 (defun lisp-deflocal (local)
