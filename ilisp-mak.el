@@ -100,6 +100,7 @@
 
 		   ;; Dialects.
 		   "ilisp-cl"
+		   "ilisp-ccl"
 		   "ilisp-cmu"
 		   "ilisp-sbcl"
 		   "ilisp-chs"
