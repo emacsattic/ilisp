@@ -69,6 +69,9 @@
 	   "ILISP-CALLERS"
 	   "ILISP-SOURCE-FILES"
 	   "ILISP-PRINT-INFO-MESSAGE"
+           #+:SBCL "SBCL-TRACE"
+           #+:CMU "CMULISP-TRACE"
+           #+(or :SBCL :CMU) "SOURCE-FILE"
 	   )
   )
 ;;; ILISP --

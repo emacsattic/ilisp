@@ -88,9 +88,9 @@
 
 (defvar *ilisp-message-addon-string* "ILISP:")
 
-(defmacro the-symbol-if-defined ((if-symbol
-                                  if-package
-                                  &optional else-symbol else-package)
+(defmacro the-symbol-if-defined (((if-symbol if-package)
+                                  (&optional else-symbol else-package)
+                                  &key eval-p)
                                  &body body)
   (let* ((sym-if (and (find-package if-package)
                       (find-symbol (symbol-name if-symbol)
@@ -100,15 +100,18 @@
              (and else-symbol
                   (find-package else-package)
                   (find-symbol (symbol-name else-symbol)
-                               (find-package else-package))))))
+                               (find-package else-package)))))
+         (tmp-symbol (or sym-if sym-else)))
     (if (consp (first body))
-      `(let ((the-symbol ,(or sym-if sym-else)))
+      `(let ((the-symbol (symbol-value ',tmp-symbol)))
         ,@body)
-      `',(or sym-if  sym-else))))
+      (if eval-p
+        `,(eval tmp-symbol)
+        `',tmp-symbol))))
                    
-(defmacro the-function-if-defined ((if-function
-                                    if-package
-                                    &optional else-function else-package)
+(defmacro the-function-if-defined (((if-function if-package)
+                                    (&optional else-function else-package)
+                                    &key function-binding-p)
                                    &body body)
   (let* ((fun-if
            (ignore-errors
@@ -121,10 +124,10 @@
                     (find-symbol (symbol-name else-function)
                                  (find-package else-package)))))))
     (when (or fun-if fun-else)
-      (if (and (consp body) (not (consp (first body))))
-        `(,(or fun-if fun-else) ,@body)
+      (if function-binding-p        
         `(let ((the-function (symbol-function ',(or fun-if fun-else))))
-          ,@body)))))
+          ,@body)
+        `(,(or fun-if fun-else) ,@body)))))
       
 
 ;;; Martin Atzmueller 2000-01-15
