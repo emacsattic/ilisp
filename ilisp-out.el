@@ -876,7 +876,8 @@ if this is not relevant."
                    (get-buffer-window buffer t)))
          (frame  (when window (window-frame window))))
     (cond ((not window)
-           (when ilisp-output-sink
+           (when (and ilisp-output-sink
+		      (get-buffer (ilisp-output-sink-buffer ilisp-output-sink)))
 	     ;; is this necessary?
              (ilisp-bury-output-internal ilisp-output-sink))
            (pop-to-buffer buffer))
