@@ -26,12 +26,8 @@ EMACS = emacs
 # change this to an ordinary copy command
 LN = ln -s
 
-# Pick the HyperSpec access package you prefer among the ones available in
-# directory `extra'
-HyperSpec = hyperspec-naggum.el
-
 # The SHELL variable is used only for making the distribution.
-SHELL = /bin/sh
+SHELL = /bin/csh
 
 # The 'rm' command used (we redefine it mostly because it may be
 # aliased
@@ -46,12 +42,13 @@ OtherFiles = README         \
              HISTORY        \
              Makefile       \
              ilisp.emacs    \
+             icompile.bat   \
              INSTALLATION   \
              COPYING        \
              GETTING-ILISP  \
              Welcome        \
 	     ChangeLog      \
-	     ACKNOWLEGDEMENTS
+	     ACKNOWLEDGMENTS
 
 # maybe add custom-ilisp.elc to LoadFiles later.
 LoadFiles = ilisp-def.elc ilisp-sym.elc \
