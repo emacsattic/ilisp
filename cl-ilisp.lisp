@@ -51,12 +51,14 @@
 ;;; Please note that while the comment and the fix posted by R. Toy
 ;;; are correct, they are deprecated by at least one of the ILISP
 ;;; maintainers. :) By removing the 'nil' in the following #+, you
-;;; will fix the problem but will not do a good service to the CL
-;;; community.  The right thing to do is to install DEFPACKAGE in your
-;;; GCL and to write the GCL maintainers and to ask them to
-;;; incorporate DEFPACKAGE in their standard builds.
+;;; will fix the problem.  However you are advised to install
+;;; DEFPACKAGE in your GCL and to write the GCL maintainers and to ask
+;;; them to incorporate DEFPACKAGE in their standard builds if this is
+;;; not so yet.
+
 ;;; 19960715 Marco Antoniotti
 ;;; 20000404 Martin Atzmueller: same for ecl/ecls
+;;; 20010831 Marco Antoniotti
 
 #+(or (and nil gcl) (and nil ecl))
 (export '(ilisp-errors
