@@ -296,7 +296,7 @@ The trick is to try to handle print case issues intelligently."
 |#
 
 ;;; 2000-09-29 11:28:36 rurban
-;;; I needed this for Xemacs/cmd.exe/cormanlisp which swallows all my backslashes.
+;;; I needed this for XEmacs/cmd.exe/cormanlisp which swallows all my backslashes.
 ;;; Slashes do work fine on NT.
 (defun ilisp-w32-fix-filename (filename)
   "Pathslash hack: replace all '\\' by '/' in filenames.
