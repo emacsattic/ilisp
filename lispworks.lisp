@@ -131,7 +131,7 @@ Returns T if successful."
 	      (loop for (ignore pathname) in (dspec:find-name-locations types symbol)
 		    when (and (pathnamep pathname)
 			      (not (member pathname processed-pathnames :test #'equal)))
-		    do (print (truename pathname))
+		    do (print (namestring (truename pathname)))
 		    (push pathname processed-pathnames))))
        (process-symbol symbol)
 
