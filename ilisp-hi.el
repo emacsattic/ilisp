@@ -697,7 +697,7 @@ symbol after the symbol has been typed in followed by #\\Space."
       (flet ((no-arglist-output-p ()
                (or (and last-char 
                         (or;; don't do silly things after comment character
-                          (equal last-char " ;")
+                          (equal last-char ";")
                           ;; do something only if directly after a sexp.
                           (equal last-char " ")))
                    (string-equal package "#+") (string-equal package "#-")
