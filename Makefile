@@ -72,7 +72,7 @@ DocFiles = docs/Makefile \
            docs/ilisp.texi
 
 
-FaslFiles = *.fasl *.fas *.lib *.x86f
+FaslFiles = *.fasl *.fas *.lib *.x86f *.sparcf
 
 #==============================================================================
 # Rules
