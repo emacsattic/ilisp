@@ -19,7 +19,7 @@
 ;;; 20001203 Patch suggested by Larry Hunter <Larry.Hunter@uchsc.edu>
 ;;; EXCL::FN_SYMDEF is no longer available by default.
 
-#+(or allegro-v5.0 allegro-v6.0) (eval-when (compile load) (require
+#+(or allegro-v5.0 allegro-v6.0 allegro-v6.1) (eval-when (compile load) (require
                                                             :llstructs))
 
 ;;;
