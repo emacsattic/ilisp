@@ -104,7 +104,9 @@ Returns T if successful."
 ;; Use dspec:*dspec-classes*
 ;; LispWorks4.2
 (defconstant *ilisp->lispworks-type-mappings*
-  '(("class" SQL:DEF-VIEW-CLASS CL:DEFCLASS)
+  '(
+    ;; ("class" SQL:DEF-VIEW-CLASS CL:DEFCLASS) ; KMR not all Lispworks has SQL package
+    ("class" CL:DEFCLASS)
     ("macro" CL:DEFMACRO)
     ("setf"  CL:FUNCTION)))
 

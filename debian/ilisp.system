@@ -12,13 +12,6 @@
 ;;;; and Craig Brozefsky. It's is licensed with the GNU Public License.
 ;;;; *************************************************************************
 
-;;; Kludge to keep lispworks.lisp file from having error
-;;; on Professional version of lispworks
-
-#+lispworks
-(unless (find-package :sql)
-	(defpackage :sql))
-
 #+(or cmu sbcl openmcl clisp lispworks allegro)
 (mk:defsystem ilisp
   :source-pathname "cl-library:ilisp;"
