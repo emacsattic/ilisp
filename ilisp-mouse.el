@@ -113,10 +113,11 @@ text table doesn't like \".\", \"~\", and other constituent chars."
 			   (let ((end (point)))
 			     (forward-sexp -1)
 			     (ilisp-mouse-snarf-sexp-after-point end))))
-		       (t
-			 (or (and (fboundp 'ffap-file-at-point)
-				  (ffap-file-at-point))
-			     (find-tag-default)))))))
+		       ;; [using ffap-file-at-point might be more featureful,
+		       ;; but it mangles URLs.  -- rgr, 11-Apr-03.]
+		       ;; ((and (fboundp 'ffap-file-at-point)
+		       ;;       (ffap-file-at-point)))
+		       (t (find-tag-default))))))
     (cond ((or (not (stringp thing))
 	       (eq (aref thing 0) ?\())
 	    ;; Thing is sometimes null; this happens (e.g.) in empty buffers.
