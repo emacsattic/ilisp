@@ -41,6 +41,9 @@ HTML_Targets = ilisp.ps ilisp.pdf ilisp_toc.html ilisp.html
 #==============================================================================
 # Rules
 
+# KMR: Add .PHONY so that make system will build html rule rather that look at html directory
+.PHONY: html
+
 docs: ps pdf info html
 
 ps: ilisp.ps ilisp-refcard.ps
