@@ -98,6 +98,22 @@ a message to let the user know what is going on."
 		      (format "Evaluate %s" (buffer-substring-no-properties start end)))))
 
 ;;;
+(defun eval-last-sexp-lisp (&optional switch)
+  "Evaluate the last sexp."
+  (interactive)
+  (let (start end)
+    (save-excursion
+      (backward-char 1)
+      (if (looking-at "\\s\)") 
+          (progn
+            (forward-char 1) 
+	    (setq end (point))
+            (backward-list 1)))
+      (setq start (point)))
+    (eval-region-lisp start end switch
+		      (format "Evaluate %s" (buffer-substring-no-properties start end)))))
+
+;;;
 (defun eval-defun-lisp (&optional switch)
   "Evaluate the current form."
   (interactive)
@@ -119,6 +135,11 @@ a message to let the user know what is going on."
   "Evaluate the next sexp and switch to the current ILISP buffer."
   (interactive)
   (eval-next-sexp-lisp t))
+
+(defun eval-last-sexp-and-go-lisp (&optional switch)
+  "Evaluate the last sexp and switch to the current ILISP buffer."
+  (interactive)
+  (eval-last-sexp-lisp t))
 
 (defun eval-defun-and-go-lisp ()
   "Evaluate the current defun and switch to the current ILISP buffer.
