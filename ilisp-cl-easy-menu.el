@@ -100,6 +100,7 @@
      )
     ("Compile"
      [ "File" compile-file-lisp t ]
+     [ "Buffer" ilisp-compile-buffer t ]
      [ "Defun" compile-defun-lisp t ]
      [ "Defun and go" compile-defun-and-go-lisp t ]
      [ "Region" compile-region-lisp t ]
