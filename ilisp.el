@@ -173,6 +173,7 @@
   (load "ilisp-luc")
   (load "ilisp-sch")
   (load "ilisp-openmcl")
+  (load "ilisp-ccl")
 
   )
 
