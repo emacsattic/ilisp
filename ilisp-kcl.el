@@ -119,7 +119,7 @@
 ;;;        Currently maintained by Juan Jose Garcia-Ripoll
 
 (defdialect ecl "EcoLisp Common LISP" akcl
-  (setq comint-prompt-regexp "^>+ "
+  (setq comint-prompt-regexp "^\\([A-Z].*\\)?>+ "
         ilisp-error-regexp "Broken at [^\n]*"
         comint-fix-error ":pop\n(progn (terpri) (values))") ; kludge
 
