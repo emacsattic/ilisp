@@ -190,7 +190,7 @@ block."
 	     (fill-region-as-paragraph begin (point))))
 	  ((looking-at comment)
 	   (let ((fill-prefix
-		  (buffer-substring
+		  (buffer-substring-no-properties
 		   (progn (beginning-of-line) (point))
 		   (match-end 0))))
 	     (while (and (not (bobp)) (lisp-in-comment comment))

@@ -102,7 +102,7 @@ be the ilisp-table."
 		(ilisp-completion-table symbol ilisp-completion-function-p)))
 	(save-excursion 
 	  (skip-chars-backward "^: \(")
-	  (setq ilisp-mini-prefix (buffer-substring (ilisp-minibuffer-prompt-end) (point)))
+	  (setq ilisp-mini-prefix (buffer-substring-no-properties (ilisp-minibuffer-prompt-end) (point)))
 	  (delete-region (ilisp-minibuffer-prompt-end) (point)))
 	;; Nothing can match this table
 	(if (not minibuffer-completion-table)

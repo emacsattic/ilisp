@@ -82,7 +82,7 @@ Point: %s
 Point-max: %s
 Code: %s"
 				major-mode start end point (point-max)
-				(buffer-substring start end)))))
+				(buffer-substring-no-properties start end)))))
 	      (insert string)))
 	(mapatoms
 	 (function (lambda (symbol)

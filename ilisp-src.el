@@ -223,7 +223,7 @@ if successful."
 	    (let* ((start (progn (forward-char 1) (point))))
 	      (skip-chars-forward "^\"") 
 	      (setq file
-		    (prog1 (buffer-substring start (point))
+		    (prog1 (buffer-substring-no-properties start (point))
 		      (end-of-line)))
 	      (bury-buffer (current-buffer))))))
   (if (not (eq file 't)) file)))
@@ -513,7 +513,7 @@ source files.  See lisp-directory."
 		 (caller-function
 		  (progn
 		    (skip-chars-forward "^ \t\n")
-		    (buffer-substring start (point)))))
+		    (buffer-substring-no-properties start (point)))))
 	    (bury-buffer (current-buffer))
 	    (edit-definitions-lisp (lisp-string-to-symbol caller-function) 
 				  (car (car (ilisp-value 'ilisp-source-types)))

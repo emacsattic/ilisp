@@ -74,6 +74,21 @@ With optional argument N, returns Nth-to-last link (default 1)."
       x)))
 
 
+(cond ((fboundp 'buffer-substring-no-properties)
+       ;; nothing to do (emacs 19-21, xemacs 21)
+       )
+      ((fboundp 'set-text-properties)
+       ;; I believe this is xemacs 20 and before
+       (defun buffer-substring-no-properties (start end)
+	 (let ((string (buffer-substring start end)))
+	   (set-text-properties 0 (length string) nil string)
+	   string)))
+      (t
+       ;; hope that buffer-substring works okay on this platform ;-)
+       (defun buffer-substring-no-properties (start end)
+	 (buffer-substring start end))))
+      
+  
 ;;; Epilogue
 
 (provide 'ilcompat)

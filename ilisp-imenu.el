@@ -174,10 +174,10 @@ things of class KEY, which can be `:types' or `:variables'."
     ;; [ydi] modified for imenu-use-markers
     (let* ((beg (if imenu-use-markers (point-marker) (point)))
            (end (progn (forward-sexp) (point)))
-           (name (buffer-substring beg end))
+           (name (buffer-substring-no-properties beg end))
            (beg2 (progn (forward-sexp) (forward-sexp -1) (point)))
            (end2 (progn (forward-sexp) (point)))
-           (args (buffer-substring beg2 end2)))
+           (args (buffer-substring-no-properties beg2 end2)))
       (cons (concat name " " args) 
 	    beg))))
 
@@ -188,7 +188,7 @@ things of class KEY, which can be `:types' or `:variables'."
     ;; [ydi] modified for imenu-use-markers
     (let ((beg (if imenu-use-markers (point-marker) (point)))
 	  (end (progn (forward-sexp) (point))))
-      (cons (buffer-substring beg end)
+      (cons (buffer-substring-no-properties beg end)
 	    beg))))
 
 
@@ -203,7 +203,7 @@ things of class KEY, which can be `:types' or `:variables'."
 	       (forward-sexp 2)
 	       (let ((beg (point))
 		     (end (progn (forward-sexp -1) (point))))
-		 (buffer-substring beg end)))
+		 (buffer-substring-no-properties beg end)))
 	   (error nil)))))
 
 ;;;---

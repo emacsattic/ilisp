@@ -30,7 +30,7 @@
 	    (skip-chars-forward " \t\n")
 	    (if (and once (>= (point) once)) (setq done t)))
 	(error (setq end nil)))
-      (if end (buffer-substring begin end)))))
+      (if end (buffer-substring-no-properties begin end)))))
 
 ;;;
 (defun ilisp-input-filter (str)
