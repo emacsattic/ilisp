@@ -594,7 +594,9 @@ it will be handled by HANDLER."
 		t (unless dispatch 'wait) 'restore "Restore" t t))	     
 	     (unless dispatch
 	       (while (not (cdr result))
-		 (sit-for 0 1 t)
+		 (if (eq +ilisp-emacs-version-id+ 'xemacs)
+		     (sit-for 0.001 t)
+		   (sit-for 0 1 t))
 		 (accept-process-output))
 	       (comint-remove-whitespace (car result))))))))
 
