@@ -42,8 +42,9 @@ obsolete.  -- rgr, 4-Sep-02.]")
 
 ;;; Patch.
 
-;; [necessary in cmucl 18d, but not in 18f (we expect).  -- rgr, 19-Feb-03.]
-#+cmu
+;; [not necessary in cmucl 18e and 19a, but probably in 18d and earlier.  --
+;; rgr, 26-Nov-03.]
+#+(and cmu (not cmu18e) (not cmu19) (not cmu20))
 (defmethod class-name ((class structure-class))
   (slot-value class 'pcl::name))
 
