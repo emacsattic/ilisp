@@ -89,10 +89,8 @@ clean:
 	(cd docs; $(MAKE) clean)
 
 loadfile:
-	touch ilisp-all.elc
-	cat $(LoadFiles) > ilisp-all.elc
-	$(RM) $(LoadFiles)
-# Note that the redirection is done by a Bourne Shell.
+	@echo 'The "loadfile" target is no longer supported.'
+	@exit 1
 
 compress:
 	gzip *.el $(OtherFiles)
