@@ -73,8 +73,8 @@ or minus forms - as well as normal IN-PACKAGE or DEFPACKAGE forms."
 		       (format (ilisp-value 'ilisp-package-command)
 			       (format (ilisp-value 'ilisp-in-package-command)
 				       (ilisp-value 'ilisp-fallback-package))))))
-	(message 
-	 (format "Buffer package not found. Using fallback-package"))
+	(message "Buffer package not found. Using fallback-package: %s"
+		 package)
 	(values package t))
       (progn
         (message "Buffer package: %s" package)
