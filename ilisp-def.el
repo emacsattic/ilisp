@@ -537,4 +537,8 @@ Default is T.")
   "Enables/disables use of Franz Inc's 'fi:clman' module.
 Default is NIL.")
 
+(defvar ilisp-*use-cltl2-interface-p* t
+  "Enables/disables loading of the CLtL2 lookup module provided with ILISP.
+Default is T.")
+
 ;;; end of file -- ilisp-def.lisp --

@@ -116,6 +116,8 @@
 (unless (featurep 'hyperspec)
   (load-library "extra/hyperspec"))
 
+(unless (featurep 'cltl2)
+  (load-library "extra/cltl2"))
 
 ;;; 19990806 Martin Atzmueller
 ;;; Added support for ILISP EASY-MENU. Muts be loaded *before* the

@@ -204,7 +204,9 @@ ilisp-*prefix* is set to the desired prefix."
     (ilisp-bind-ilisp-key-for-map keymap "A" 'fi:clman-apropos "\M-a")
     (ilisp-bind-ilisp-key-for-map keymap "D" 'fi:clman "\M-d"))
   (when ilisp-*use-hyperspec-interface-p*
-    (ilisp-bind-ilisp-key-for-map keymap "H" 'hyperspec-lookup "\M-h")))
+    (ilisp-bind-ilisp-key-for-map keymap "H" 'hyperspec-lookup "\M-h"))
+  (when ilisp-*use-cltl2-interface-p*
+    (ilisp-bind-ilisp-key-for-map keymap "L" 'cltl2-lookup "\M-l")))
 
 
 ;;

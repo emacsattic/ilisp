@@ -81,6 +81,7 @@ compile:
 	$(EMACS) -batch -l ilisp-mak.el
 	(cd extra; $(LN) -f $(HyperSpec) hyperspec.el)
 	$(EMACS) -batch --eval '(byte-compile-file "extra/hyperspec.el")'
+	$(EMACS) -batch --eval '(byte-compile-file "extra/cltl2.el")'
 
 tags:
 	etags *.el
@@ -124,6 +125,7 @@ tarring:
             $(patsubst %,$(Ilisp_tar_dir)/%,$(DocFiles))                \
             $(Ilisp_tar_dir)/extra/README                               \
             $(Ilisp_tar_dir)/extra/hyperspec-*.el                       \
+	    $(Ilisp_tar_dir)/extra/cltl2.el				\
             $(Ilisp_tar_dir)/pictures/ilisp-icon.*                      \
         )
 
