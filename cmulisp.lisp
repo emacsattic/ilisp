@@ -209,17 +209,25 @@ Takes a symbol or function and returns the pathname for the file the
 function was defined in.  If it was not defined in some file, nil is
 returned."
   (flet ((frob (code)
-	       (let ((info (the-function-if-defined ((#:%code-debug-info
-                                                      :kernel)
-                                                     (#:code-debug-info
-                                                      :kernel))
-                                                    code)))
-		 (when info
-		       (let ((sources (c::debug-info-source info)))
-			 (when sources
-			       (let ((source (car sources)))
-				 (when (eq (c::debug-source-from source) :file)
-				       (c::debug-source-name source)))))))))
+	   ;; extract a source file from a code object.
+	   (let ((info (the-function-if-defined ((#:%code-debug-info
+						  :kernel)
+						 (#:code-debug-info
+						  :kernel))
+						code)))
+	     (dolist (source (and info (c::debug-info-source info)))
+	       (case (c::debug-source-from source)
+		 (:file
+		   (when (c::debug-source-name source)
+		     (return (c::debug-source-name source))))
+		 ;; this accesses the c::source-info data installed by the
+		 ;; ilisp-compile fn.
+		 (:stream
+		   (let ((dsi (c::debug-source-info source)))
+		     (when dsi
+		       (let ((file-info (first (c::source-info-files dsi))))
+			 (when file-info
+			   (return (c::file-info-name file-info))))))))))))
 	(typecase function
 		  (symbol (fun-defined-from-pathname (fdefinition function)))
                   (#.(the-symbol-if-defined ((#:byte-closure :kernel) ()))
