@@ -16,14 +16,6 @@
 ;;; $Id$
 
 ;;;----------------------------------------------------------------------------
-;;; Prologue
-
-#+(or allegro-v4.0 allegro-v4.1)
-(eval-when (compile load eval)
-  (setq excl:*cltl1-in-package-compatibility-p* t))
-
-
-;;;----------------------------------------------------------------------------
 ;;; Definitions
 
 ;;; ILISP package --
