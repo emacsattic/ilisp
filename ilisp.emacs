@@ -150,7 +150,7 @@
                        ("\\.cl$" . lisp-mode))
                      auto-mode-alist))
 
-(setq lisp-mode-hook '(lambda () (require 'ilisp)))
+(add-hook 'lisp-mode-hook '(lambda () (require 'ilisp)))
 
 (set-default 'auto-mode-alist
              (append '(("\\.scm$" . scheme-mode)
@@ -159,7 +159,7 @@
                        ("\\.stklos$" . scheme-mode))
                      auto-mode-alist))
 
-(setq scheme-mode-hook '(lambda () (require 'ilisp)))
+(add-hook 'scheme-mode-hook '(lambda () (require 'ilisp)))
 
 
 ;;; Configuration of Erik Naggum's HyperSpec access package.
