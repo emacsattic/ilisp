@@ -254,16 +254,16 @@ sink."
   ;; given an active output sink, make it go away.
   (let* ((buffer (ilisp-output-sink-buffer ilisp-output-sink))
 	 (window (and buffer (get-buffer-window buffer t)))
-	 (frame (ilisp-output-sink-frame ilisp-output-sink)))
-    (if (eq ilisp-output-sink (car ilisp-*output-sink-history*))
-	(setq ilisp-*output-sink-history*
-	      (cdr ilisp-*output-sink-history*)))
+	 (frame (ilisp-output-sink-frame ilisp-output-sink)))    
     (with-current-buffer buffer
       (erase-buffer))
     (bury-buffer buffer)
     (if frame
 	(unless (eql this-command 'ilisp-arglist-message-lisp-space)
-	  (ilisp-delete-message-frame ilisp-output-sink))
+	  (ilisp-delete-message-frame ilisp-output-sink)
+          (if (eq ilisp-output-sink (car ilisp-*output-sink-history*))
+            (setq ilisp-*output-sink-history*
+                    (cdr ilisp-*output-sink-history*))))
 	(when window
 	  (ilisp-delete-window window)))))
 
