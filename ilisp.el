@@ -234,8 +234,7 @@
 ;;;
 ;;; 2000-03-04 Martin Atzmueller
 
-(when (and ilisp-*enable-imenu-p*
-           (not (eq +ilisp-emacs-version-id+ 'xemacs)))
+(when ilisp-*enable-imenu-p*
   (when (ignore-errors (require 'imenu))
     (load "ilisp-imenu")))
 
