@@ -448,12 +448,6 @@ By default the file will be loaded from the ilisp-directory.")
 (defvar ilisp-comment-marker (make-marker)
   "Marker for end of a comment region.")
 
-
-(defvar lisp-buffer-file nil 
-  "Cons of buffer-file-name and the expanded name.")
-
-(make-variable-buffer-local 'lisp-buffer-file)
-
 (defvar ilisp-last-message nil)
 
 (defvar ilisp-last-prompt nil)
