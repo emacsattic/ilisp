@@ -1156,7 +1156,13 @@ items."
 			  "any")
 			;; [specifying "any" uses the cache.  -- rgr, 4-Sep-02.]
 			;; (car possible-types)
-			"any"))))
+                      (if (ilisp-value 'ilisp-find-source-command t)
+                          ;; inferior lisp will tell us
+                          "any"
+                        (let ((types (ilisp-value 'ilisp-source-types t)))
+                          (ilisp-completing-read
+                           (format "Type [%s]: " (caar types))
+                           types (caar types))))))))
 	  ;; Non-interactive cases (reusing the last definition name).
 	  ((zerop numeric-arg)
 	    (list nil 'visit))
