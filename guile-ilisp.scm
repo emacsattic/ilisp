@@ -392,8 +392,9 @@ or while f returns #f. If returning early, return the return value of f."
 	     (write 'nil)))
 	 (lambda (key . args)
 	   (if (eq? key 'result)
-	       (begin (write (car args)) (newline) (write #t) (newline))
-	       (write 'nil)))))
+	       (begin (write (car args)) (newline) (write #t))
+	       (begin (write 'nil)))))
+  (newline))
 
 (define-public (ilisp-macroexpand-1 expression package)
   (write (save-module-excursion
