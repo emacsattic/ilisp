@@ -18,7 +18,7 @@
 ;;;
 ;;; $Id$
 
-(in-package "ILISP")
+(in-package :ilisp)
 
 ;; Make LispWorks interactive
 #+Unix

@@ -70,7 +70,7 @@
   (setq ilisp-directory-command "(lw:current-pathname)")
   (setq ilisp-set-directory-command "(hcl:change-directory \"%s\")")
   (setq ilisp-find-source-command 
-	"(ILISP:ilisp-source-files \"%s\" \"%s\" \"%s\")")
+	"(ilisp:ilisp-source-files \"%s\" \"%s\" \"%s\")")
 
   ;;; 19990806 Unknown Author (blame Marco Antoniotti for this)
   (setq ilisp-package-command

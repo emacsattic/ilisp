@@ -55,7 +55,7 @@
   (setq ilisp-source-types (append ilisp-source-types '(("any"))))
 
   (setq ilisp-find-source-command 
-	"(ILISP:ilisp-source-files \"%s\" \"%s\" \"%s\")")
+	"(ilisp:ilisp-source-files \"%s\" \"%s\" \"%s\")")
 
   ;; Note:
   ;; 19990920

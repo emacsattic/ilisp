@@ -19,7 +19,7 @@
 ;;;
 ;;; 19990824 Marco Antoniotti
 
-(defvar *ILISP-default-package* "COMMON-LISP-USER")
+(defvar *ILISP-default-package* :common-lisp-user)
 
 (defun ilisp-add-set-package-hook ()	; Was: add-set-package-hook
   (interactive)
