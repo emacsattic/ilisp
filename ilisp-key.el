@@ -222,7 +222,8 @@ ilisp-*prefix* is set to the desired prefix."
   ;;       case she presumably knows what she wants. -Karl Fogel, 3 Feb 2000
   (cond ((eq +ilisp-emacs-version-id+ 'fsf-18))
 	((or (eq +ilisp-emacs-version-id+ 'fsf-19)
-	     (eq +ilisp-emacs-version-id+ 'fsf-20))
+	     (eq +ilisp-emacs-version-id+ 'fsf-20)
+	     (eq +ilisp-emacs-version-id+ 'fsf-21))
 	 (defkey-ilisp (read "[?\\S-\\C-a]") 'arglist-lisp)
 	 (defkey-ilisp (read "[?\\S-\\C-c]") 'compile-defun-lisp)
 	 (defkey-ilisp (read "[?\\S-\\C-d]") 'documentation-lisp)
