@@ -20,6 +20,11 @@
 
 (in-package "ILISP")
 
+;; Make LispWorks interactive
+#+Unix
+(setf system::*force-top-level* t)
+
+
 ;;; ilisp-eval --
 ;;;
 ;;; Notes:
@@ -65,8 +70,8 @@ Returns T if successful."
 	    )
 	(when (and function-name (fboundp function-name))
 	  (setf callers (munge-who-calls
-			 #+:lispworks4.1 (hcl:who-calls function-name)
-			 #-:lispworks4.1 (lw:who-calls function-name)
+			 #+:lispworks3 (hcl:who-calls function-name)
+			 #-:lispworks3 (lw:who-calls function-name)
 			 ))
 	  (dolist (caller callers)
 	    (print caller))
@@ -152,20 +157,19 @@ Returns T if successful."
 ;;; I decided to leave these in, although they are a little too system
 ;;; dependent.  I will remove them if people complain.
 
-(unless (fboundp 'sys::define-top-loop-handler)
+(eval-when (:compile-toplevel :load-toplevel :execute)
+  (unless (fboundp 'sys::define-top-loop-handler)
 
-  ;; Duplicated from ccl/top-loop.lisp
-  (defmacro sys::get-top-loop-handler (command-name)
-    `(get ,command-name 'sys::top-loop-handler))
+    ;; Duplicated from ccl/top-loop.lisp
+    (defmacro sys::get-top-loop-handler (command-name)
+      `(get ,command-name 'sys::top-loop-handler))
 
-  (defmacro sys::define-top-loop-handler (name &body body)
-    (lw:with-unique-names (top-loop-handler)
-      `(let ((,top-loop-handler #'(lambda (sys::line) ,@body)))
-        (mapc #'(lambda (name)
-                  (setf (sys::get-top-loop-handler name) ,top-loop-handler))
-         (if (consp ',name) ',name  '(,name))))))
-
-  )
+    (defmacro sys::define-top-loop-handler (name &body body)
+      (lw:with-unique-names (top-loop-handler)
+        `(let ((,top-loop-handler #'(lambda (sys::line) ,@body)))
+          (mapc #'(lambda (name)
+                    (setf (sys::get-top-loop-handler name) ,top-loop-handler))
+           (if (consp ',name) ',name  '(,name))))))))
 
 (sys::define-top-loop-handler :ilisp-send
   (values (multiple-value-list (eval (cadr sys::line))) nil))
