@@ -60,7 +60,7 @@ LoadFiles = ilisp-def.elc ilisp-sym.elc \
  ilisp-ext.elc ilisp-mod.elc ilisp-dia.elc ilisp-cmt.elc ilisp-rng.elc \
  ilisp-hnd.elc ilisp-utl.elc ilisp-cmp.elc ilisp-kil.elc ilisp-snd.elc \
  ilisp-xfr.elc ilisp-hi.elc ilisp-aut.elc \
- ilisp-cl.elc ilisp-cmu.elc ilisp-sbcl.elc \
+ ilisp-cl.elc ilisp-cmu.elc ilisp-sbcl.elc ilisp-cl-easy-meny.elc\
  ilisp-acl.elc ilisp-kcl.elc ilisp-luc.elc ilisp-sch.elc ilisp-hlw.elc \
  ilisp-xls.elc ilisp-chs.elc
 
@@ -78,10 +78,8 @@ FaslFiles = *.fasl *.fas *.lib *.x86f *.sparcf
 # Rules
 
 compile:
+	(cd extra; $(LN) -f $(HyperSpec) hyperspec.el; cd ..)
 	$(EMACS) -batch -l ilisp-mak.el
-	(cd extra; $(LN) -f $(HyperSpec) hyperspec.el)
-	$(EMACS) -batch --eval '(byte-compile-file "extra/hyperspec.el")'
-	$(EMACS) -batch --eval '(byte-compile-file "extra/cltl2.el")'
 
 tags:
 	etags *.el
