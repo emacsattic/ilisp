@@ -191,6 +191,7 @@
           ilisp-documentation-command "(ilisp-help '%s \"%s\")"
           ilisp-print-info-message-command "(ilisp-print-info-message '%s \"%s\")"
           ilisp-arglist-command "(ilisp-arglist '%s \"%s\")"
+	  ilisp-describe-command "(ilisp-describe '%s \"%s\")"
 	  ilisp-find-source-command "(ilisp-source-file \"%s\" \"%s\")"
           ilisp-macroexpand-command "(ilisp-macroexpand \"%s\" \"%s\")"
           ilisp-macroexpand-1-command "(ilisp-macroexpand-1 \"%s\" \"%s\")"
