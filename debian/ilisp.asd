@@ -2,20 +2,21 @@
 ;;;; *************************************************************************
 ;;;; FILE IDENTIFICATION
 ;;;;
-;;;; Name:          ilisp.system
-;;;; Purpose:       System file for ILISP
-;;;; Programmer:    Craig Brozefsky, Kevin M. Rosenberg
-;;;; Date Started:  Aug 2002
+;;;; Name:          ilisp.asd
+;;;; Purpose:       ASDF definition file for ILISP
+;;;; Programmer:    Kevin M. Rosenberg
+;;;; Date Started:  Sep 2002
 ;;;;
 ;;;; $Id$
-;;;; This file, part of ILISP, is Copyright (c) 2002 by Kevin Rosenberg
-;;;; and Craig Brozefsky. It's is licensed with the GNU Public License.
+;;;; This file, part of ILISP, is Copyright (c) 2002 by Kevin Rosenberg.
+;;;; It's is licensed with the GNU Public License.
 ;;;; *************************************************************************
 
+(in-package :asdf)
+
 #+(or cmu sbcl openmcl clisp lispworks allegro)
-(mk:defsystem ilisp
-  :source-pathname "cl-library:ilisp;"
-  :source-extension "lisp"
+(defsystem ilisp
+  :pathname "cl-library:ilisp;"
   :components ((:file "ilisp-pkg")
 	       (:file "cl-ilisp" :depends-on ("ilisp-pkg"))
 	       #+cmu (:file "cmulisp" :depends-on ("cl-ilisp"))
