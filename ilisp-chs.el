@@ -125,7 +125,7 @@
 	))
 
 (unless clisp-hs-program
-  (setq clisp-hs-program "clisp -I -q -a")) ; ILISP, quiet, and ANSI.
+  (setq clisp-hs-program "clisp -I")) ; ILISP friendly
 
 (provide 'ilisp-chs)
 
