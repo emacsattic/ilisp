@@ -15,7 +15,7 @@
 #==============================================================================
 # Various Variables
 
-Version = 5.11.1
+Version = 5.12.0
 
 # Use whichever you like most
 #EMACS = xemacs
