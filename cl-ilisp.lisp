@@ -36,12 +36,6 @@
 ;;;
 ;;;
 
-
-#+(or allegro-v4.0 allegro-v4.1)
-(eval-when (compile load eval)
-  (setq excl:*cltl1-in-package-compatibility-p* t))
-
-
 (in-package :ilisp)
 
 ;;;
@@ -162,9 +156,8 @@
   handlers
   (if (macro-function 'handler-case)
       `(handler-case ,expression ,@handlers)
-      #+allegro `(excl::handler-case ,expression ,@handlers)
       #+lucid `(lucid::handler-case ,expression ,@handlers)
-      #-(or allegro lucid) expression))
+      #-lucid expression))
 
 
 ;;; ilisp-readtable-case --
@@ -173,15 +166,12 @@
 ;;; READTABLE-CASE is ANSI.  However, I feel magnanimous today, so I
 ;;; leave the check in to make it easier for non conforming
 ;;; implementations.
+;;; [but a #+allegro case is no longer needed.  -- rgr, 10-Sep-02.]
 
 (defun ilisp-readtable-case (readtable)
   (if (fboundp 'readtable-case)
       (readtable-case readtable)
-      #+allegro (case excl:*current-case-mode*
-		  (:case-insensitive-upper :upcase)
-		  (:case-insensitive-lower :downcase)
-		  (otherwise :preserve))
-      #-allegro :upcase))
+      :upcase))
 
 ;;;
 (defmacro ilisp-errors (form)
