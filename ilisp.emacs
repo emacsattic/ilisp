@@ -161,6 +161,13 @@
 ;       "file:/home/joe/HyperSpec/")
 
 
+;;; Configuration of Utz-Uwe Haus' CLtL2 access package.
+
+;; If you have a local copy of CLtL2, set its path here.
+; (setq cltl2-root-url
+;       "file:/home/joe/cltl2/")
+
+
 ;;; Sample load hook
 
 (add-hook 'ilisp-load-hook
