@@ -33,6 +33,7 @@
 (defdialect allegro "Allegro Common LISP"
   common-lisp
   (ilisp-load-init 'allegro ilisp-allegro-init-file)
+  (ilisp-load-init 'new-edit-definitions "find-src")
   (setq comint-fix-error ":pop"
 	ilisp-reset ":reset"
 	comint-continue ":cont"
@@ -54,8 +55,8 @@
 
   (setq ilisp-source-types (append ilisp-source-types '(("any"))))
 
-  (setq ilisp-find-source-command 
-	"(ilisp:ilisp-source-files \"%s\" \"%s\" \"%s\")")
+  ;; [use new protocol.  -- rgr, 24-Mar-03.]
+  (setq ilisp-find-source-command "(ilisp::source-file %S %S %S)")
 
   ;; Note:
   ;; 19990920

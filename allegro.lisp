@@ -19,8 +19,8 @@
 ;;; 20001203 Patch suggested by Larry Hunter <Larry.Hunter@uchsc.edu>
 ;;; EXCL::FN_SYMDEF is no longer available by default.
 
-#+(or allegro-v5.0 allegro-v6.0 allegro-v6.1) (eval-when (compile load) (require
-                                                            :llstructs))
+#+(or allegro-v5.0 allegro-v6.0 allegro-v6.1)
+(eval-when (compile load) (require :llstructs))
 
 ;;;
 (defun ilisp-callers (symbol package)
@@ -56,24 +56,6 @@ Returns T if successful."
 	 (dolist (caller callers)
 	   (print caller))
 	 t)))))
-
-;;;
-(defun ilisp-source-files (symbol package type)
-  "Print each file for PACKAGE:SYMBOL's TYPE definition on a line.
-Returns T if successful."
-  (ilisp-errors
-   (let* ((symbol (ilisp-find-symbol symbol package))
-	  (type (if (equal type "any") t (ilisp-find-symbol type "keyword")))
-	  (paths (when symbol (excl:source-file symbol type))))
-     (if paths
-	 (progn
-	   (if (eq type t)
-	       (dolist (path (remove-duplicates paths
-						:key #'cdr :test #'equal))
-		 (print (namestring (cdr path))))
-	       (print (namestring paths)))
-	   t)
-	 nil))))
 
 ;;;===========================================================================
 ;;; Epilogue

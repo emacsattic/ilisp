@@ -42,6 +42,7 @@
 (defdialect cmulisp "CMU Common LISP"
   common-lisp
   (ilisp-load-init 'cmu ilisp-cmulisp-init-file)
+  (ilisp-load-init 'new-edit-definitions "find-src")
   (if cmulisp-local-source-directory
       (setq ilisp-source-directory-fixup-alist
 	    (list 
@@ -69,7 +70,7 @@
         ilisp-directory-command "(namestring (ext:default-directory))"
         ilisp-set-directory-command "(setf (ext:default-directory) \"%s\")"
 
-	ilisp-find-source-command "(ilisp:source-file \"%s\" \"%s\" \"%s\")"
+	ilisp-find-source-command "(ilisp::source-file %S %S %S)"
 
 	comint-fix-error ":pop"
 

@@ -122,6 +122,7 @@
 (defdialect sbcl "Steel Bank Common LISP"
   common-lisp
   (ilisp-load-init 'sbcl ilisp-sbcl-init-file)
+  (ilisp-load-init 'new-edit-definitions "find-src")
 
   ;; set the right check-prompt function, according to the right SBCL version:
   ;; we have to do this after the Lisp has been started, because we have to
