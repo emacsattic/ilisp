@@ -126,7 +126,7 @@
 
 (unless clisp-hs-program
   ;; -a instead of -ansi, since it works with older clisps
-  (setq clisp-hs-program "clisp -a -I")) ; ANSI mode, ILISP friendly
+  (setq clisp-hs-program "clisp -ansi -I")) ; ANSI mode, ILISP friendly
 
 (provide 'ilisp-chs)
 
