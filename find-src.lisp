@@ -45,7 +45,7 @@ obsolete.  -- rgr, 4-Sep-02.]")
 ;; [necessary in cmucl 18d, but not in 18f (we expect).  -- rgr, 19-Feb-03.]
 #+cmu
 (defmethod class-name ((class structure-class))
-  (kernel::structure-class-name class))
+  (slot-value class 'pcl::name))
 
 ;;; Definition specifications.
 
