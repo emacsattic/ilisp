@@ -94,6 +94,7 @@
 		   "ilisp-hi"
 		   "ilisp-aut"
 		   "ilisp-mnb"
+		   "ilisp-src"
 
 		   ;; ILD Support.
 		   "ild"
