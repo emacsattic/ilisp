@@ -118,6 +118,7 @@ tarring:
             $(patsubst %,$(Ilisp_tar_dir)/%,$(OtherFiles))              \
             $(Ilisp_tar_dir)/*.el                                       \
             $(Ilisp_tar_dir)/*.lisp                                     \
+            $(Ilisp_tar_dir)/*.scm                                      \
             $(patsubst %,$(Ilisp_tar_dir)/%,$(DocFiles))                \
             $(Ilisp_tar_dir)/extra/README                               \
             $(Ilisp_tar_dir)/extra/hyperspec-*.el                       \
