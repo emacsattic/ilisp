@@ -265,7 +265,9 @@ sink."
             (setq ilisp-*output-sink-history*
                     (cdr ilisp-*output-sink-history*))))
 	(when window
-	  (ilisp-delete-window window)))))
+	  (condition-case error
+	      (ilisp-delete-window window)
+	    (error t))))))
 
 (defun ilisp-bury-output (&optional bury-all-p)
   "Delete the topmost typeout window, with sink's buffer, if any.
