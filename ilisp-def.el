@@ -436,12 +436,6 @@ By default the file will be loaded from the ilisp-directory.")
 
 (defvar right-delimiter "\)" "*Right delimiter for find-unbalanced.")
 
-;;; Copies of ilisp var definitions
-
-(defvar ilisp-complete nil "T when ilisp is in completion mode.")
-
-(defvar ilisp-modes '(ilisp-mode) "List of all inferior ilisp modes.")
-
 (defvar lisp-fill-marker (make-marker)
   "Keeps track of point so that it does not move during a reindent-lisp.")
 
