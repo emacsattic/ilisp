@@ -268,9 +268,11 @@ ilisp-*prefix* is set to the desired prefix."
   (when (fboundp 'lisp-mode-commands)
     (lisp-mode-commands ilisp-mode-map))
   (lisp-bindings ilisp-mode-map t)
-  (when (boundp 'lisp-mode-map)
+  (when (and (memq 'lisp-mode lisp-source-modes)
+	     (boundp 'lisp-mode-map))
     (lisp-bindings lisp-mode-map))
-  (when (boundp 'scheme-mode-map) 
+  (when (and (memq 'scheme-mode lisp-source-modes)
+	     (boundp 'scheme-mode-map)) 
     (lisp-bindings scheme-mode-map))
   (ilisp-bind-ilisp-key-for-map emacs-lisp-mode-map ";" 'comment-region-lisp "\C-v\C-\\")
 
