@@ -144,7 +144,10 @@
      ;; With which var can I test if 'fi' is really loaded? Can I just
      ;; use FEATUREP?
      [ "Clman-apropos" fi:clman-apropos nil ] 
-     [ "Hyperspec - apropos"
+     [ "CLtL2"
+       cltl2-lookup
+      ,ilisp-*use-cltl2-interface-p* ]
+      [ "Hyperspec - apropos"
        hyperspec-lookup
        ,ilisp-*use-hyperspec-interface-p* ]
      )
@@ -168,6 +171,7 @@
      [ "Clear changes" clear-changes-lisp t ]
      "--"
      [ "Trace defun" trace-defun-lisp t ]
+     [ "Trace defun - break" trace-defun-lisp-break t ]
      )
     "--"
     [ "Reset Ilisp Connection" reset-ilisp t ]
@@ -192,6 +196,7 @@
      [ "Local"    ild-local 	(ilisp-ild-p) ]
      [ "Return"   ild-return 	(ilisp-ild-p) ]
      [ "Retry"    ild-retry 	(ilisp-ild-p) ]
+     [ "Step"     ild-step	(ilisp-ild-p) ]
      [ "Trap on exit" ild-trap-on-exit (ilisp-ild-p) ]
      "--"
      [ "Fast lisp" fast-lisp t ]
