@@ -11,11 +11,7 @@
 ;;; $Id$
 
 
-;;; Old history log.
-
-;;; 2000-03-03 Martin Atzmueller
-;;; use imenu for displaying a fancy function/definition list.
-
+(require 'imenu)
 
 ;;; modified for a better display of function+arglist! 
 ;;; let tokens contain spaces and test with string-equal.
@@ -209,65 +205,6 @@ things of class KEY, which can be `:types' or `:variables'."
 		     (end (progn (forward-sexp -1) (point))))
 		 (buffer-substring beg end)))
 	   (error nil)))))
-
-
-; (defun ilisp-imenu-create-lisp-index ()
-;   ;; `imenu-create-index-function' is set to this.
-;   ;; generates a nested index of definitions.
-;   (let ((index-fun-alist '())
-; 	(index-var-alist '())
-;         (index-const-alist '())
-; 	(index-type-alist '())
-; 	(index-unknown-alist '())
-; 	prev-pos)
-;     (goto-char (point-max))
-;     (imenu-progress-message prev-pos 0)
-;     ;; Search for the function
-;     (while (beginning-of-defun)
-;       (imenu-progress-message prev-pos nil t)
-; 	  (save-match-data
-; 	    (and (looking-at "(def")
-; 		 (save-excursion
-; 	       (down-list 1)
-; 		   (cond
-; 		((looking-at "def\\(var\\|constant\\|parameter\\)")
-; 		     (forward-sexp 2)
-; 		     (push (ilisp-imenu-general--name-and-position)
-; 			   index-var-alist))
-; 		((looking-at "def\\(un\\|macro\\|method\\|generic\\)")
-; 		     (forward-sexp 2)
-; 		     (push (ilisp-imenu-function--name-and-position)
-; 			   index-fun-alist))
-; 		((looking-at "def\\(type\\|struct\\|class\\|ine-condition\\)")
-; 		     (forward-sexp 2)
-;  		 (if (= (char-after (1- (point))) ?\))
-; 			 (progn
-;  		       (forward-sexp -1)
-; 			   (down-list 1)
-;  		       (forward-sexp 1)))
-; 		     (push (ilisp-imenu-general--name-and-position)
-; 			   index-type-alist))
-;                 ((looking-at "def")
-;                  (forward-sexp 2)
-; 		     (push (ilisp-imenu-function--name-and-position)
-; 			   index-fun-alist))
-; 		    (t
-; 		     (forward-sexp 2)
-; 		     (push (ilisp-imenu-general--name-and-position)
-; 		       index-unknown-alist)))))))
-;     (imenu-progress-message prev-pos 100)
-;     (and index-var-alist
-; 	 (push (cons "Variables" index-var-alist)
-; 	       index-fun-alist))
-;     (and index-type-alist
-;  	 (push (cons "Types" index-type-alist)
-;   	       index-fun-alist))
-;     (and index-unknown-alist
-; 	 (push (cons "Syntax-unknown" index-unknown-alist)
-; 	       index-fun-alist))
-;     index-fun-alist))
-
-
 
 ;;;---
 

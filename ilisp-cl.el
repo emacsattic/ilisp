@@ -67,9 +67,6 @@
 	ilisp-in-package-command
 	"(in-package \"%s\")"
 
-         ilisp-defpackage-regexp
-         "^[ \t]*(defpackage[ \t\n]*"
- 
          ilisp-hash-form-regexp
          "\\(^[ \t]*#[+-].\\)\\|\\(^[ \t]*(\\(.*::?\\)?defpackage[ \t\n]\\)\\|\\(^[ \t]*(\\(.*::?\\)?in-package[ \t\n]*\\)"
 

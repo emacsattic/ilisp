@@ -200,7 +200,7 @@
 				"Scheme commands"
 				ilisp-scheme-easy-menu) 
 	      (when (boundp 'scheme-menu)
-		(easy-menu-remove scheme-menu 'scheme-mode-map))
+		(easy-menu-remove scheme-menu))
 	      (easy-menu-add ilisp-scheme-easy-menu 'scheme-mode-map)
 	      )))
 

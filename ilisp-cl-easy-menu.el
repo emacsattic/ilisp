@@ -1,4 +1,4 @@
-;;; ilisp-easy-menu.el --- (easy)menu's on Emacs for Ilisp
+;;; Ilisp-easy-menu.el --- (easy)menu's on Emacs for Ilisp
 
 ;;; Copyright (C) 1996 Holger Schauer
 ;;;
@@ -46,7 +46,7 @@
 ;; Put it in a place where (X)Emacs can find it and augment your
 ;; .emacs like the following to use it.
 ;; (load-library "ilisp-easy-menu")
-;; This needs to be loaderd prior to Ilisp !
+;; This needs to be loaded prior to Ilisp !
 ;; This should give you the menu in any source code buffer and any inferior 
 ;; ilisp buffer. Be careful: the menu is initialized with add-hook
 ;; on ilisp-mode-hook and lisp-mode-hook, so if you setq these two
@@ -210,7 +210,7 @@
 				"lisp commands"
 				ilisp-cl-easy-menu) 
 	      (when (boundp 'lisp-menu)
-		(easy-menu-remove lisp-menu 'lisp-mode-map))
+		(easy-menu-remove lisp-menu))
 	      (easy-menu-add ilisp-cl-easy-menu 'lisp-mode-map)
 	      )))
 
