@@ -45,7 +45,7 @@
 ;;; definition is a result of internecine wars during the ANSI
 ;;; definition process. The solution to make CL case insensitive and
 ;;; have the reader use uppercase appears, with the power of
-;;; hindsight, shot-sighted. However, the backwardly incompatible
+;;; hindsight, short-sighted. However, the backwardly incompatible
 ;;; solution provided by Franz Inc seems a poor fix."
 ;;; 26 March 2002 Will Deakin
 
