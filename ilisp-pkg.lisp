@@ -46,8 +46,8 @@
 ;;; definition process. The solution to make CL case insensitive and
 ;;; have the reader use uppercase appears, with the power of
 ;;; hindsight, short-sighted. However, the backwardly incompatible
-;;; solution provided by Franz Inc seems a poor fix."
-;;; 26 March 2002 Will Deakin
+;;; solution provided by Franz Inc seems a sub-optimal fix."
+;;; 27 March 2002 Will Deakin
 
 #-(and nil gcl)
 (defpackage :ilisp (:use :common-lisp #+:CMU :conditions)
