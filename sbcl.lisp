@@ -69,25 +69,24 @@
 ;;; 2000-04-02: Martin Atzmueller
 ;;; better (more bulletproof) arglist code adapted from cmulisp.lisp:
 
+(defun massage-arglist (args)
+  (typecase args
+    (string args)
+    (cons (let ((*print-pretty* t)
+		(*print-escape* t)
+		(*print-base* 10)
+		(*print-radix* nil))
+	    (format nil "~A" args)))
+    (null "()")
+    (t "")))
+
 (defun arglist (symbol-name package)
   (ilisp-errors
    (let* ((package-name (if (packagep package)
                             (package-name package)
                           package))
 	  (symbol (ilisp-find-symbol symbol-name package-name)))
-     (flet ((massage-arglist (args)
-	      (typecase args
-		(string (if (or (null args) (string= args "()"))
-                          ""
-                          args))
-		(list (if args
-                        (let ((*print-pretty* t)
-                              (*print-escape* t)
-                              (*print-base* 10)
-                              (*print-radix* nil))
-                          (format nil "~A" args))
-                        "()"))
-		(t ""))))
+     (flet ()
        (multiple-value-bind (func kind)
 	   (extract-function-info-from-name symbol)
 	 (if (and func kind)
@@ -102,14 +101,19 @@
                                       ((#:widetag-of :sb-impl)
                                        (#:get-type :sb-impl))
                                       func)
-                                ((,(symbol-value
-                                    (the-symbol-if-defined
-                                     ((#:closure-header-widetag :sb-vm)
-                                      (#:closure-header-type :sb-vm))))
-                                  ,(symbol-value
-                                    (the-symbol-if-defined
-                                     ((#:simple-fun-header-widetag :sb-vm)
-                                      (#:function-header-type :sb-vm))))
+                                (,(symbol-value
+				   (the-symbol-if-defined
+				    ((#:simple-fun-header-widetag :sb-vm)
+				     (#:function-header-type :sb-vm))))
+                                 (massage-arglist
+                                  (the-function-if-defined
+                                   ((#:%simple-fun-arglist :sb-impl)
+                                    (#:%function-arglist :sb-impl))
+                                   func)))
+				((,(symbol-value
+				    (the-symbol-if-defined
+				     ((#:closure-header-widetag :sb-vm)
+				      (#:closure-header-type :sb-vm))))
                                   ,(symbol-value
                                     (the-symbol-if-defined
                                      ((#:closure-fun-header-widetag :sb-vm)
@@ -118,7 +122,9 @@
                                   (the-function-if-defined
                                    ((#:%simple-fun-arglist :sb-impl)
                                     (#:%function-arglist :sb-impl))
-                                   func)))
+                                   (the-function-if-defined
+				    ((#:%closure-fun :sb-impl) ())
+				    func))))
                                 (,(symbol-value
                                    (the-symbol-if-defined
                                     ((#:funcallable-instance-header-widetag :sb-vm)
