@@ -37,7 +37,7 @@
 			:type (pathname-type fasl))))
 	  (when (probe-file symlink)
 	    (delete-file symlink))
-	(let ((cmd (format nil "ln -s ~A ~A"
+	(let ((cmd (format nil "ln -sf ~A ~A"
 			   (namestring fasl) (namestring symlink))))
 	  (asdf:run-shell-command cmd))
 	)))))
