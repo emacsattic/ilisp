@@ -103,6 +103,11 @@ even though the user interface requests the dialect name, e.g. \"cmulisp\"."
 	  ;; 22-Sep-02.]
 	  (error "Oops; buffer %S no longer exists." new-ilisp-buffer))
 	(t
+	  ;; flush M-. cache first.  [it might be cleaner to cache based on the
+	  ;; dialect as well, but then we'd also have to provide a separate
+	  ;; command to flush the cache explicitly.  -- rgr, 18-Jul-03.]
+	  (setq lisp-inferior-source-definitions-cache nil)
+	  ;; install new selected dialect.
 	  (setq ilisp-buffer new-ilisp-buffer)
 	  (message "Selecting %s as the current ILISP dialect buffer."
 		   (substring new-ilisp-buffer 1 -1)))))
