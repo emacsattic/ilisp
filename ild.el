@@ -183,25 +183,6 @@
 	(t (lucid)			; put your favorite Lisp here
 	   (delete-other-windows))))
 
-(defun select-ilisp (arg)
-  "Select the current ILISP buffer."
-  (interactive "P")
-  (when (and (not arg)
-	     (member* (buffer-name (current-buffer)) ilisp-buffers
-		      :test (function (lambda (x y)
-					(equal x (format "*%s*" (car y)))))))
-    (setq ilisp-buffer (buffer-name (current-buffer)))
-    (let ((new (completing-read
-		(if ilisp-buffer
-		    (format "Buffer [%s]: "
-			    (substring ilisp-buffer
-				       1
-				       (1- (length ilisp-buffer))))
-		  "Buffer: ")
-		ilisp-buffers nil t)))
-      (unless (zerop (length new))
-	(setq ilisp-buffer (format "*%s*" new))))))
-
 ;;; This fixes a bug in ILISP 4.1
 ;;;
 ;;; Note:
