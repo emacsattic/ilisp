@@ -239,21 +239,22 @@ Completion of symbols though the inferior LISP is allowed."
 (defvar lisp-program-map nil
   "Minibuffer map for reading a program and arguments.")
 
+
 ;;;
 (defun lisp-read-program (prompt &optional initial)
-  "Read a program with PROMPT and INITIAL.  TAB or Esc-TAB will complete
-filenames."
-  (if (null lisp-program-map)
-      (progn 
-	(if (fboundp 'set-keymap-parent)
-	    (progn
-	      (setq lisp-program-map (make-sparse-keymap))
-	      (set-keymap-parent lisp-program-map minibuffer-local-map))
-	  (setq lisp-program-map (copy-keymap minibuffer-local-map)))
-	(define-key lisp-program-map "\M-\t" 'comint-dynamic-complete)
-	(define-key lisp-program-map "\t" 'comint-dynamic-complete)
-	(define-key lisp-program-map "?" 'comint-dynamic-list-completions)))
+  "Read a program with PROMPT and INITIAL.
+TAB or Esc-TAB will complete filenames."
+  (unless lisp-program-map
+    (if (fboundp 'set-keymap-parent)
+	(progn
+	  (setq lisp-program-map (make-sparse-keymap))
+	  (set-keymap-parent lisp-program-map minibuffer-local-map))
+      (setq lisp-program-map (copy-keymap minibuffer-local-map)))
+    (define-key lisp-program-map "\M-\t" 'comint-dynamic-complete)
+    (define-key lisp-program-map "\t" 'comint-dynamic-complete)
+    (define-key lisp-program-map "?" 'comint-dynamic-list-completions))
   (read-from-minibuffer prompt initial lisp-program-map))
+
 
 ;;;%%ilisp-read-symbol
 (defun ilisp-read-symbol (prompt &optional default function-p no-complete)
