@@ -231,18 +231,19 @@ arglist only.  If EXPENSIVE?, take some more effort."
   "Evaluate SYM in PACKAGE and print an informational message about
 the value.  For procedures, the arglist is printed.
 This procedure is invoked by the electric space key."
-  (let ((obj (catch #t
-		    (lambda ()
-		      (eval-in-package sym
-				       (string->module package)))
-		    (lambda args #f))))
+  (if (symbol? sym)
+      (let ((obj (catch #t
+			(lambda ()
+			  (eval-in-package sym
+					   (string->module package)))
+			(lambda args #f))))
 		     
-    (cond
-     ((and obj
-	   (info-message sym obj #f #f))
-      => (lambda (message)
-	   (display message)
-	   (newline))))))
+	(cond
+	 ((and obj
+	       (info-message sym obj #f #f))
+	  => (lambda (message)
+	       (display message)
+	       (newline)))))))
 
 (define (if-defined symbol package
 			   defined-procedure undefined-procedure)
