@@ -168,7 +168,7 @@
 ; (setq common-lisp-hyperspec-root
 ;       "file:/home/joe/HyperSpec/")
 ; (setq common-lisp-hyperspec-symbol-table
-;       "/home/joe/HyperSpec/Data/Map_Sym.Txt")
+;       "/home/joe/HyperSpec/Data/Map_Sym.txt")
 
 ;; Here's how to get the newest version of the CLHS:
 ;; <http://groups.google.com/groups?selm=sfwvgftux7g.fsf%40shell01.TheWorld.com>
