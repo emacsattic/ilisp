@@ -697,7 +697,8 @@ symbol after the symbol has been typed in followed by #\\Space."
                    (string-equal package "#+") (string-equal package "#-")
                    double-quote-pos;; there is no output  for strings only.
                    (not (and symbol (stringp symbol) (> (length symbol) 0)))
-                   (string-match "^\. " symbol))))
+                   (string-match "^\. " symbol)
+                   (string-match "^\\\\" symbol))))
 
         (goto-char old-point)
         (unless (no-arglist-output-p)
