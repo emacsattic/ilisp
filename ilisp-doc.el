@@ -40,7 +40,7 @@ partially supported):
    lispworks
    lucid
      liquid
-   sblisp
+   sbcl
  scheme
    chez
    guile

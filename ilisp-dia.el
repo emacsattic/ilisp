@@ -34,7 +34,7 @@
 ;;;   lispworks (Harlequin)
 ;;;   lucid
 ;;;   cmulisp
-;;;   sblisp    (really a derivative of CMUCL)
+;;;   sbcl    (really a derivative of CMUCL)
 ;;;   kcl
 ;;;     akcl
 ;;;     ibcl

@@ -38,7 +38,7 @@
 ;;;
 (defdialect sbcl "Steel Bank Common LISP"
   common-lisp
-  (ilisp-load-init 'sb ilisp-sbcl-init-file)
+  (ilisp-load-init 'sbcl ilisp-sbcl-init-file)
 
   (setq comint-prompt-regexp "^\\([0-9]+\\]+\\|\\*\\) "
 	ilisp-trace-command "(ILISP:sbcl-trace \"%s\" \"%s\" \"%s\")"
