@@ -24,6 +24,9 @@
 					; constant.
     (message ";;; Emacs Version %s" +ilisp-emacs-version-id+)
 
+    (if (eq +ilisp-emacs-version-id+ 'xemacs)
+	(setq load-path (cons "../xemacs-base" load-path)))
+
     (if (eq +ilisp-emacs-version-id+ 'fsf-18)
         (load "comint-v18")
       (load "comint"))
