@@ -1,20 +1,15 @@
 ;;;; guile-ilisp.scm --- ILISP support functions for GUILE
 ;;;; Matthias Koeppe <mkoeppe@mail.math.uni-magdeburg.de> 
-
-;;; This file is part of ILISP.
-;;; Version: 5.10.1
 ;;;
 ;;; Copyright (C) 2000 Matthias Koeppe
 ;;;
-;;; Other authors' names for which this Copyright notice also holds
-;;; may appear later in this file.
+;;; This file is part of ILISP.
+;;; Please refer to the file COPYING for copyrights and licensing
+;;; information.
+;;; Please refer to the file ACKNOWLEGDEMENTS for an (incomplete) list
+;;; of present and past contributors.
 ;;;
-;;; Send mail to 'majordomo@cons.org' to be included in the
-;;; ILISP mailing list. 'ilisp@cons.org' is the general ILISP
-;;; mailing list were bugs and improvements are discussed.
-;;;
-;;; ILISP is freely redistributable under the terms found in the file
-;;; COPYING.
+;;; $Id$
 
 
 (define-module (guile-user)
@@ -258,7 +253,7 @@ procedure. This procedure is invoked by `arglist-lisp'."
 						      str list)))))	      
 
 (define-public (ilisp-matching-symbols string package function? external? prefix?)
-  (map (lambda (sym) (list (symbol->string sym)))
+  (write (map (lambda (sym) (list (symbol->string sym)))
        (let ((regexp (if (eq? prefix? 't)
 			 (string-append "^" (regexp-quote string))
 			 (make-word-regexp string)))
@@ -267,6 +262,7 @@ procedure. This procedure is invoked by `arglist-lisp'."
 	  (lambda ()
 	    (set-current-module (string->module package))
 	    (a-i regexp))))))
+  (newline))
 
 (define (last l)
   (cond ((and (pair? l) (not (null? (cdr l))))
@@ -292,25 +288,31 @@ procedure. This procedure is invoked by `arglist-lisp'."
   ;; module with the Guile interpreter if it isn't there already.
   ;; Otherwise `resolve-module' will give us a bad environment later,
   ;; which just makes trouble.
-  (let ((module-last-name
+  (let ((name
 	 (eval-in-package 
 	  (append sequence-of-defines
-		  '(module-name (current-module)))
+		  '((module-name (current-module))))
 	  (string->module "(guile-user)"))))
-    ;; Now we have the name of the module -- but only the last
-    ;; component.  No idea how to get the full one; so we need to
-    ;; "parse" the sequence-of-defines ourselves.
-    ;; NOTE: Guile 1.4.1 gives us the full one but we have to take care
-    ;; for older versions... 
-    (let ((last-form (last sequence-of-defines)))
-      (cond ((and (pair? last-form)
-		  (eq? (car last-form) 'define-module))
-	     (cadr last-form))
-	    (else '(guile-user))))))
+    (cond
+     ((pair? name)
+      ;; This version of Guile has a module-name procedure that
+      ;; returns the full module name.  Good.
+      (write name))
+     (else 
+      ;; Now we have the name of the module -- but only the last
+      ;; component.  We need to "parse" the sequence-of-defines
+      ;; ourselves.
+      (let ((last-form (last sequence-of-defines)))
+	(cond ((and (pair? last-form)
+		    (eq? (car last-form) 'define-module))
+	       (write (cadr last-form)))
+	      (else (write '(guile-user))))))))
+  (newline))
 
 (define-public (ilisp-in-package package)
   (set-current-module (string->module package))
-  (process-use-modules '((guile-ilisp))))
+  (process-use-modules '((guile-ilisp)))
+  *unspecified*)
 
 (define-public (ilisp-eval form package filename line)
   "Evaluate FORM in PACKAGE recording FILENAME as the source file
@@ -352,20 +354,23 @@ or while f returns #f. If returning early, return the return value of f."
 				 (source-property s 'filename)))
 			      source)
 		     (lambda (filename) (throw 'result filename))))))
-	     'nil))
+	     (write 'nil)))
 	 (lambda (key . args)
 	   (if (eq? key 'result)
-	       (begin (write (car args)) (newline) #t)
-	       'nil))))
+	       (begin (write (car args)) (newline) (write #t) (newline))
+	       (write 'nil)))))
 
 (define-public (ilisp-macroexpand-1 expression package)
-  (save-module-excursion
+  (write (save-module-excursion
    (lambda ()
      (set-current-module (string->module package))
      (macroexpand-1 (read-from-string expression)))))
+  (newline))
 
 (define-public (ilisp-macroexpand expression package)
-  (save-module-excursion
+  (write (save-module-excursion
    (lambda ()
      (set-current-module (string->module package))
      (macroexpand (read-from-string expression)))))
+  (newline))
+
