@@ -346,7 +346,7 @@ procedure. This procedure is invoked by `arglist-lisp'."
 
 (define-public (ilisp-in-package package)
   (set-current-module (string->module package))
-  (process-use-modules '((guile-ilisp)))
+  (process-use-modules '(((guile-ilisp))))
   *unspecified*)
 
 (define-public (ilisp-eval form package filename line)
