@@ -70,8 +70,8 @@ Returns T if successful."
 	    )
 	(when (and function-name (fboundp function-name))
 	  (setf callers (munge-who-calls
-			 #+:lispworks3 (hcl:who-calls function-name)
-			 #-:lispworks3 (lw:who-calls function-name)
+			 #+(or :lispworks3 :lispworks4) (hcl:who-calls function-name)
+			 #-(or :lispworks3 :lispworks4) (lw:who-calls function-name)
 			 ))
 	  (dolist (caller callers)
 	    (print caller))
