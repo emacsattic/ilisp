@@ -153,7 +153,13 @@
      (when real-symbol (eval `(trace ,real-symbol :break ,breakp))))))
 
 (defun ilisp-callers (name package)
+  #-(or cmu18e cmu19) (declare (ignore name package))
   (ilisp-errors
+    ;; [this reader conditionalization strategy fails if there's a cmu18f
+    ;; release.  -- rgr, 11-Apr-03.]
+    #-(or cmu18e cmu19)
+    (error "Finding callers is not supported in this version of CMUCL.")
+    #+(or cmu18e cmu19)
     (let ((symbol (ilisp-find-symbol name package))
 	  (callers nil))
       (unless symbol
@@ -167,9 +173,12 @@
 	  ;; must use pushnew, because the current release doesn't correctly
 	  ;; flush old definitions.  -- rgr, 11-Apr-03.
 	  (pushnew caller-name callers :test #'equal)))
-      ;; print callers afterwards, to minimize GC messages interference.
-      (dolist (caller callers)
-	(print caller))
+      ;; print callers afterwards, to minimize GC messages interference.  bind
+      ;; *package* so that all symbols are printed with a suitable prefix.
+      (let ((*package* (find-package :ilisp))
+	    (*print-pretty* nil) (*print-circle* nil))
+	(dolist (caller callers)
+	  (print caller)))
       t)))
 
 ;;; end of file -- cmulisp.lisp --
