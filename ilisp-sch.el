@@ -17,7 +17,7 @@
 ;;; Scheme
 
 (defdialect scheme "Scheme" ilisp
-  (setq ilisp-block-command "(begin #f\n%s)") ; is #f a good idea or should it be
+  (setq ilisp-block-command "(begin #f\n%s\n)") ; is #f a good idea or should it be
                                               ; something more distinct such as
                                               ; '--ilisp-empty-block--?
   (setq ilisp-load-command "(load \"%s\")")
