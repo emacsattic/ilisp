@@ -254,7 +254,7 @@ The function should print out callers with one per line.")
 (deflocal ilisp-binary-extension nil
   "*The extension to use for LISP binaries.
 If there is an ilisp-binary-command, this string will be determined at
-initilization time.")
+initialization time.")
 
 (deflocal ilisp-init-binary-command nil
   "Command to return the extension for initialization binary files.")
@@ -262,7 +262,7 @@ initilization time.")
 (deflocal ilisp-init-binary-extension nil
   "The extension for initialization binary files.
 If there is an ilisp-init-binary-command, this string will be
-determined at initilization time.")
+determined at initialization time.")
 
 (deflocal ilisp-load-command nil
   "Format string for loading a file in LISP given FILE.")
