@@ -31,6 +31,7 @@
 		  (minibuffer . nil)
 		  (visibility . nil)
 		  (unsplittable . t)
+		  (tool-bar-lines . nil)
 		  (menu-bar-lines . 0)
                   ;; Use of icon-type is currently disabled due to a bug
                   ;; in at least Emacs 21.1 running on Windows.
