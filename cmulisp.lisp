@@ -101,21 +101,12 @@
 	fun)))
 
 (defun extract-function-info-from-name (sym)
-  (let ((function (and (fboundp sym)
-		       (symbol-function sym))))
-    (cond ((macro-function sym)
-	    (values (macro-function sym) :macro))
-	  ((not function)
-	    (values nil nil))
-	  ((lisp::encapsulation-info function)
-	    ;; If the function has been traced, we need to get to the underlying
-	    ;; function.  [what about multiple encapsulations?  -- rgr,
-	    ;; 11-Sep-02.]
-	    (values (lisp::encapsulation-info-definition
-		      (lisp::encapsulation-info function))
-		    :function))
-	  (t
-	    (values function :function)))))
+  (cond ((macro-function sym)
+	  (values (macro-function sym) :macro))
+	((fboundp sym)
+	  (values (fdefinition sym) :function))
+	(t
+	  (values nil nil))))
 
 ;;;%% arglist - return arglist of function
 ;;;
