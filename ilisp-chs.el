@@ -119,6 +119,7 @@
 	ild-backtrace-string "backtrace"
 	ild-locals-string nil
 	ild-local-string-arg nil
+	ild-step-string "step"
 	ild-return-string "return"
 	ild-retry-string "redo"
 	ild-trap-on-exit-string "break+" ; I'm not sure about this
