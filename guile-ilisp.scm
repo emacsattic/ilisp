@@ -12,14 +12,16 @@
 ;;; $Id$
 
 
-(define-module (guile-user)
-  :use-module (guile-ilisp))
-
 (define-module (guile-ilisp)
   :use-module (ice-9 debug)
   :use-module (ice-9 session)
   :use-module (ice-9 documentation)
   :use-module (ice-9 regex))
+
+(define-module (guile-user)
+  :use-module (guile-ilisp))
+
+(define-module (guile-ilisp))
 
 (define (read-from-string str)
   (call-with-input-string str read))
