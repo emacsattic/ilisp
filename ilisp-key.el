@@ -186,13 +186,13 @@ ilisp-*prefix* is set to the desired prefix."
   (ilisp-bind-ilisp-key-for-map keymap "!" 'default-directory-lisp "\C-v\C-d")
   (ilisp-bind-ilisp-key-for-map keymap " " 'mark-change-lisp "\C-v ")
 
-  (ilisp-bind-ilisp-key-for-map keymap "*l" 'list-changes-lisp "\C-v\C-@")
-  (ilisp-bind-ilisp-key-for-map keymap "*e" 'eval-changes-lisp "\C-j\C-@")
-  (ilisp-bind-ilisp-key-for-map keymap "*c" 'compile-changes-lisp "\C-k\C-@")
-  (ilisp-bind-ilisp-key-for-map keymap "*0" 'clear-changes-lisp "\C-v@")
+  (ilisp-bind-ilisp-key-for-map keymap "*l" 'list-changes-lisp "\C-v\C-c")
+  (ilisp-bind-ilisp-key-for-map keymap "*e" 'eval-changes-lisp "\C-j\C-c")
+  (ilisp-bind-ilisp-key-for-map keymap "*c" 'compile-changes-lisp "\C-k\C-c")
+  (ilisp-bind-ilisp-key-for-map keymap "*0" 'clear-changes-lisp "\C-vc")
 
   (ilisp-bind-ilisp-key-for-map keymap "b" 'switch-to-lisp "\C-v\C-a")
-  (ilisp-bind-ilisp-key-for-map keymap "y" 'call-defun-lisp "\C-v\C-c")
+  (ilisp-bind-ilisp-key-for-map keymap "y" 'call-defun-lisp "\C-v\C-j")
   (ilisp-bind-ilisp-key-for-map keymap "z" 'reset-ilisp "\C-b\C-z")
   (ilisp-bind-ilisp-key-for-map keymap "g" 'abort-commands-lisp "\C-ba")
   (ilisp-bind-ilisp-key-for-map keymap "s" 'status-lisp "\C-b\C-y")
