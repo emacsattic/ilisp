@@ -14,7 +14,7 @@
 ;;; $Id$
 
 
-(in-package "ILISP")
+(in-package :ilisp)
 
 ;; ILISP-specifics for SBCL. Since version 0.7 introduced lots of changes,
 ;; e.g.(bytecode-)interpreter goes away, and lots of other 'renaming'-changes,

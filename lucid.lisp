@@ -12,7 +12,7 @@
 ;;;
 ;;; $Id$
 
-(in-package "ILISP")
+(in-package :ilisp)
 
 ;;;
 (defun ilisp-callers (symbol package &aux (list-of-callers nil))

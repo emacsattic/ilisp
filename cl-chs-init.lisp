@@ -29,7 +29,7 @@
 ;;; another option might be sys::arglist ...
 ;;; added command to preload inspect1
 
-(in-package "ILISP")
+(in-package :ilisp)
 
 ;;;
 (defun ilisp-inspect (sexp package)

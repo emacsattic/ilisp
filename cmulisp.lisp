@@ -13,7 +13,7 @@
 ;;; $Id$
 
 
-(in-package "ILISP")
+(in-package :ilisp)
 
 ;;;% CMU CL does not define defun as a macro
 (defun ilisp-compile (form package filename)

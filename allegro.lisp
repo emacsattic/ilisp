@@ -14,7 +14,7 @@
 ;;; Allegro initializations
 ;;; Author: Chris McConnell, ccm@cs.cmu.edu
 
-(in-package "ILISP")
+(in-package :ilisp)
 
 ;;; 20001203 Patch suggested by Larry Hunter <Larry.Hunter@uchsc.edu>
 ;;; EXCL::FN_SYMDEF is no longer available by default.

@@ -42,7 +42,7 @@
   (setq excl:*cltl1-in-package-compatibility-p* t))
 
 
-(in-package "ILISP")
+(in-package :ilisp)
 
 ;;;
 ;;; GCL 2.2 and GCL 2.3 do not have defpackage (yet) so we need to put
