@@ -171,6 +171,7 @@
   (load "ilisp-kcl")
   (load "ilisp-luc")
   (load "ilisp-sch")
+  (load "ilisp-openmcl")
 
   )
 

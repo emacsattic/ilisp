@@ -107,6 +107,7 @@
 		   "ilisp-hlw"
 		   "ilisp-luc"
 		   "ilisp-xls"
+		   "ilisp-openmcl"
 		   "ilisp-sch"
 		   "ilisp-cl-easy-menu"
 		   "ilisp-scheme-easy-menu"

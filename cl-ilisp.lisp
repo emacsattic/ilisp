@@ -471,8 +471,11 @@ The trick is to try to handle print case issues intelligently."
 	   
 	   #+:sbcl
 	   (arglist symbol (symbol-package symbol))
+
+	   #+:openmcl
+	   (arglist symbol (symbol-package symbol))
 	   
-	   #-(or allegro lucid kcl ibcl ecl gcl lispworks clisp cmu :sbcl)
+	   #-(or allegro lucid kcl ibcl ecl gcl lispworks clisp cmu :sbcl :openmcl)
 	   (documentation symbol 'function)))))
 
 

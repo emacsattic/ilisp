@@ -40,6 +40,7 @@
 ;;;     ibcl
 ;;;     ecl
 ;;;     gcl
+;;;   openmcl
 ;;; scheme
 ;;;   oaklisp
 ;;;   Scheme->C (still "in fieri")

@@ -62,7 +62,7 @@ LoadFiles = ilisp-def.elc ilisp-sym.elc \
  ilisp-xfr.elc ilisp-hi.elc ilisp-aut.elc \
  ilisp-cl.elc ilisp-cmu.elc ilisp-sbcl.elc ilisp-cl-easy-menu.elc\
  ilisp-acl.elc ilisp-kcl.elc ilisp-luc.elc ilisp-sch.elc ilisp-hlw.elc \
- ilisp-xls.elc ilisp-chs.elc
+ ilisp-xls.elc ilisp-chs.elc ilisp-openmcl.elc
 
 
 DocFiles = docs/Makefile \
@@ -72,7 +72,7 @@ DocFiles = docs/Makefile \
            docs/ilisp.texi
 
 
-FaslFiles = *.fasl *.fas *.lib *.x86f *.sparcf
+FaslFiles = *.fasl *.fas *.lib *.x86f *.sparcf *.pfsl
 
 #==============================================================================
 # Rules
