@@ -62,9 +62,6 @@
 (eval-when (:execute :load-toplevel)
   (when (not (compiled-function-p #'ilisp-inspect))
     (ilisp-message t "File is not compiled, use M-x ilisp-compile-inits"))
-
-  (when (boundp 'system::*source-file-types*)
-    (pushnew (pathname ".lisp") system::*source-file-types* :test #'equalp))
   (sys::debug-unwind))
 
 
