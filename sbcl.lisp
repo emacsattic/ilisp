@@ -112,7 +112,13 @@
 		(string (if (or (null args) (string= args "()"))
                           ""
                           args))
-		(list (format nil "~S" args))
+		(list (if args
+                        (let ((*print-pretty* t)
+                              (*print-escape* t)
+                              (*print-base* 10)
+                              (*print-radix* nil))
+                          (format nil "~A" args))
+                        "()"))
 		(t ""))))
 
        (multiple-value-bind (func kind)
