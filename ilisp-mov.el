@@ -176,7 +176,7 @@ region, T will be returned as well."
 	(skip-chars-forward "^\"" end)
 	(setq begin (point))
 	(if (< begin end)
-	    (if (and (not (bobp)) (= (char-after (1- begin)) ??))
+	    (if (and (not (bobp)) (= (char-after (1- begin)) ?\\))
 		(forward-char)
 		(if (condition-case () (progn (forward-sexp) (<= (point) end))
 		      (error nil))
