@@ -66,9 +66,14 @@ WITH-PROCEDURE?, include the procedure symbol."
       (let ((start-index
 	     (if with-procedure?
 		 (string-length pattern)
-		 (1+ (string-index doc #\space
-				   (string-length pattern))))))
-	(let ((eol-index (string-index doc #\newline start-index)))
+		 (min (1+ (or (string-index doc #\space
+					    (string-length pattern))
+			      (string-length pattern)))
+		      (or (string-index doc #\newline
+					(string-length pattern))
+			  (string-length pattern))))))
+	(let ((eol-index (or (string-index doc #\newline start-index)
+			     (string-length doc))))
 	  (string-append 
 	   "("
 	   (let loop ((bol-index (+ 1 eol-index))
