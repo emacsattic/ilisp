@@ -16,7 +16,6 @@
 
 #+(or cmu sbcl openmcl clisp lispworks allegro)
 (defsystem ilisp
-  :pathname "cl-library:ilisp;"
   :components ((:file "ilisp-pkg")
 	       (:file "cl-ilisp" :depends-on ("ilisp-pkg"))
 	       #+cmu (:file "cmulisp" :depends-on ("cl-ilisp"))
