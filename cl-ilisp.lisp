@@ -127,17 +127,20 @@
 ;;; ilisp-message was mostly set up because Clisp expects an
 ;;; ~& or ~% before the message-string, otherwise it does not display anything!"
 
-(defun ilisp-message (format-output-stream format-control-string &rest args)
-  "ilisp-message provides an interface to create 'special' ILISP messages, i.e. \"ILISP: ... \" in an uniform way."
-  (let* ((format-string (apply #'format nil " ~@?" format-control-string args))
-         (concat-string (if (equal (char format-string 0) #\")
-                            ""
-                          (if format-output-stream
-                              "\""
-                            ""))))
-    (format format-output-stream
-            (concatenate 'string "~&" concat-string *ilisp-message-addon-string* format-string concat-string))))
-
+(defun ilisp-message (output-stream format-control-string &rest args)
+  "ilisp-message provides an interface to create 'special' ILISP
+messages, i.e. \"ILISP: ... \" in an uniform way."
+  (let ((result-string (apply #'format nil format-control-string args)))
+    (format output-stream
+	    ;; [what are these quotes for, and why do we only want them
+	    ;; sometimes?  it doesn't necessarily make the resulting output
+	    ;; readable, that i can see.  right now only ilisp-errors passes nil
+	    ;; for output-stream, btw.  -- rgr, 27-Sep-02.]
+	    (if (or (equal (char result-string 0) #\")
+		    (not output-stream))
+		"~&~A ~A"
+		"~&\"~A ~A\"")
+	    *ilisp-message-addon-string* result-string)))
 
 ;; MNA: ecl (ecls-0.5) still had special-form-p in COMMON-LISP,
 ;; which produced an error, when redefined.
@@ -193,7 +196,9 @@
      ;; a separate init file.
      #+:clisp
      (setq system::*command-index* (max 0 (- system::*command-index* 2)))
-
+     ;; [do the same gross hack for ACL.  -- rgr, 27-Sep-02.]
+     #+allegro (setq tpl::*this-command-number*
+		     (max 0 (- tpl::*this-command-number* 2)))
      (ilisp-handler-case
       ,form	
       (error (error)
@@ -437,9 +442,7 @@ This will only work on Microsoft NT, not on a Win95 based OS."
 	      (if arglist
 		  (write arglist :case :downcase :escape nil)
 		  (write-string "()"))))
-      (t (error (ilisp-message nil
-			       "arglist doc very messed up [~S]."
-			       arglist-doc))))
+      (t (error "arglist doc very messed up [~S]." arglist-doc)))
     (terpri)
     (values)))
 
