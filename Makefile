@@ -49,7 +49,9 @@ OtherFiles = README         \
              INSTALLATION   \
              COPYING        \
              GETTING-ILISP  \
-             Welcome
+             Welcome        \
+	     ChangeLog      \
+	     ACKNOWLEGDEMENTS
 
 # maybe add custom-ilisp.elc to LoadFiles later.
 LoadFiles = ilisp-def.elc ilisp-sym.elc \
