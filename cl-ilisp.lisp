@@ -53,7 +53,7 @@
 ;;; 19960715 Marco Antoniotti
 ;;; 20010831 Marco Antoniotti
 
-#+(or (and nil gcl))
+#+(or (and gcl))
 (export '(ilisp-errors
 	  ilisp-save
 	  ilisp-restore
@@ -215,15 +215,12 @@ messages, i.e. \"ILISP: ... \" in an uniform way."
 ;;;
 (defun ilisp-save ()
   "Save the current state of the result history."
-  (declare (special / // /// + ++ +++))
   (unless *ilisp-old-result*
     (setq *ilisp-old-result* (list /// // +++ ++ + /))))
 
 ;;;
 (defun ilisp-restore ()
   "Restore the old result history."
-  (declare (special / // + ++ * ** -))
-    
   (setq // (pop *ilisp-old-result*)
 	** (first //)
 	/  (pop *ilisp-old-result*)

@@ -41,7 +41,7 @@
 ;;; solution provided by Franz Inc seems a sub-optimal fix."
 ;;; 27 March 2002 Will Deakin
 
-#-(and nil gcl)
+#-(and gcl)
 (defpackage :ilisp
   (:use :common-lisp
 	#+:CMU :conditions
