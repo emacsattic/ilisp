@@ -119,11 +119,11 @@
 
 (defdialect ecl "EcoLisp Common LISP" akcl
   (setq comint-prompt-regexp "^>+"
-	ilisp-binary-extension "o"
-        ilisp-init-binary-extension "ecl.o"
-	ilisp-binary-command "\"o\""
-	ilisp-init-binary-command "\"ecl.o\""
-	)
+        ilisp-error-regexp "Broken at [^\n]*"
+        ilisp-binary-extension nil
+        ilisp-init-binary-extension nil
+	ilisp-binary-command nil
+        ilisp-init-binary-command nil)
 
   ;; ILD Support.
 
