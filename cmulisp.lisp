@@ -25,13 +25,13 @@
 ;;; This fixes that problem, which only occurs in the CMU cores of this year.
 ;;;
 
-(defvar *Fix-pipe-streams* T
+(defvar *Fix-pipe-streams* t
   "Set to Nil if you want them left alone.  And tell me you don't get stuck.")
 
 (when (and *Fix-pipe-streams*
 	   (lisp::synonym-stream-p *terminal-io*)
 	   (eq (lisp::synonym-stream-symbol *terminal-io*)
-	       'SYSTEM::*TTY*))
+	       'system::*tty*))
   (setf *terminal-io* (make-two-way-stream system::*stdin* system::*stdout*))
   ;; *query-io* and *debug-io* are synonym streams to this, so this fixes
   ;; everything.
