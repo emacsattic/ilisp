@@ -15,14 +15,6 @@
 
 (in-package :ilisp)
 
-;;;% CMU CL does not define defun as a macro
-(defun ilisp-compile (form package filename)
-  "Compile FORM in PACKAGE recording FILENAME as the source file."
-  (ilisp-errors
-   (ilisp-eval
-    (format nil "(funcall (compile nil '(lambda () ~A)))" form)
-    package filename)))
-
 ;;;% Stream settings, when running connected to pipes.
 ;;;
 ;;; This fixes a problem when running piped: When CMU is running as a piped
