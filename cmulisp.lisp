@@ -67,9 +67,10 @@
 			(member-if
 			 #'(lambda (restart)
 			     (string=
-			      (funcall
-			       (conditions::restart-report-function restart)
-			       nil)
+                              (with-output-to-string (s)
+			        (funcall
+			         (conditions::restart-report-function restart)
+			         s))
 			      "Return to " :end1 10))
 			 restart-list)))
 		   (cond ((zerop num) (car first))
