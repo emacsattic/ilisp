@@ -38,6 +38,8 @@
 
 (deflocal ild-abort-string nil)
 (deflocal ild-continue-string nil)
+(deflocal ild-step-string nil)
+(deflocal ild-step-string-arg nil)
 (deflocal ild-next-string nil)
 (deflocal ild-next-string-arg nil)
 (deflocal ild-previous-string nil)
@@ -74,6 +76,16 @@
 	 (ild-debugger-command ild-continue-string)
 	 (beep))
      (if arg (capitalize-word arg) (capitalize-word 1))))
+
+(defun ild-step (&optional arg)
+ (interactive "P")
+ (if arg
+     (if ild-step-string-arg
+	 (ild-debugger-command (format ild-step-string-arg arg))
+	 (beep))
+     (if ild-step-string
+	 (ild-debugger-command ild-step-string)
+	 (beep))))
 
 (defun ild-next (&optional arg)
  (interactive "P")
@@ -215,6 +227,7 @@
 
 (defkey-ilisp "\M-a"    'ild-abort         t  'no-fsf-key)
 (defkey-ilisp "\M-c"    'ild-continue      t  'no-fsf-key)
+(defkey-ilisp "\C-\M-s" 'ild-step          t  'no-fsf-key)
 (defkey-ilisp "\C-\M-n" 'ild-next          t  'no-fsf-key)
 (defkey-ilisp "\C-\M-p" 'ild-previous      t  'no-fsf-key)
 (defkey-ilisp "\C-c<"   'ild-top           t  'no-fsf-key)

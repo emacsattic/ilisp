@@ -99,6 +99,8 @@
 
   (setq ild-abort-string ":abort"
 	ild-continue-string ":go"
+	ild-step-string ":step"
+	ild-step-string-arg nil
 	ild-next-string ":down"
 	ild-next-string-arg nil		; needs work
 	ild-previous-string ":up"
