@@ -13,6 +13,7 @@
 ;;; Author: Chris McConnell <ccm@cs.cmu.edu>
 ;;; Maintainer: The Net <ilisp@cons.org>
 ;;; Created: 14 Jun 1994
+;;; License: GPL
 
 ;;; Keywords: lisp common-lisp scheme comint
 
